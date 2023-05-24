@@ -126,7 +126,7 @@ class Zend_Controller_Dispatcher_Standard extends Zend_Controller_Dispatcher_Abs
         }
 
         $module = (string) $module;
-        if (array_key_exists($module, $this->_controllerDirectory)) {
+        if (isset($this->_controllerDirectory[$module])) {
             return $this->_controllerDirectory[$module];
         }
 
@@ -142,7 +142,7 @@ class Zend_Controller_Dispatcher_Standard extends Zend_Controller_Dispatcher_Abs
     public function removeControllerDirectory($module)
     {
         $module = (string) $module;
-        if (array_key_exists($module, $this->_controllerDirectory)) {
+        if (isset($this->_controllerDirectory[$module])) {
             unset($this->_controllerDirectory[$module]);
             return true;
         }

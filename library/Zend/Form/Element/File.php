@@ -128,7 +128,7 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
             return parent::getPluginLoader($type);
         }
 
-        if (!array_key_exists($type, $this->_loaders)) {
+        if (!isset($this->_loaders[$type])) {
             require_once 'Zend/Loader/PluginLoader.php';
             $loader = new Zend_Loader_PluginLoader(array(
                 'Zend_File_Transfer_Adapter' => 'Zend/File/Transfer/Adapter/',

@@ -245,7 +245,7 @@ class Zend_Log_Writer_Syslog extends Zend_Log_Writer_Abstract
      */
     protected function _write($event)
     {
-        if (array_key_exists($event['priority'], $this->_priorities)) {
+        if (isset($this->_priorities[$event['priority']])) {
             $priority = $this->_priorities[$event['priority']];
         } else {
             $priority = $this->_defaultPriority;

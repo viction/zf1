@@ -381,7 +381,7 @@ class Zend_Dojo_View_Helper_Dojo_Container
     {
         $path = (string) $path;
         $layers = array_flip($this->_layers);
-        if (array_key_exists($path, $layers)) {
+        if (isset($layers[$path])) {
             unset($layers[$path]);
             $this->_layers = array_keys($layers);
         }
@@ -558,7 +558,7 @@ class Zend_Dojo_View_Helper_Dojo_Container
     public function getDjConfigOption($option, $default = null)
     {
         $option = (string) $option;
-        if (array_key_exists($option, $this->_djConfig)) {
+        if (isset($this->_djConfig[$option])) {
             return $this->_djConfig[$option];
         }
         return $default;
@@ -718,7 +718,7 @@ class Zend_Dojo_View_Helper_Dojo_Container
      */
     public function addDijit($id, array $params)
     {
-        if (array_key_exists($id, $this->_dijits)) {
+        if (isset($this->_dijits[$id])) {
             require_once 'Zend/Dojo/View/Exception.php';
             throw new Zend_Dojo_View_Exception(sprintf('Duplicate dijit with id "%s" already registered', $id));
         }
@@ -782,7 +782,7 @@ class Zend_Dojo_View_Helper_Dojo_Container
      */
     public function hasDijit($id)
     {
-        return array_key_exists($id, $this->_dijits);
+        return isset($this->_dijits[$id]);
     }
 
     /**
@@ -819,7 +819,7 @@ class Zend_Dojo_View_Helper_Dojo_Container
      */
     public function removeDijit($id)
     {
-        if (array_key_exists($id, $this->_dijits)) {
+        if (isset($this->_dijits[$id])) {
             unset($this->_dijits[$id]);
         }
 

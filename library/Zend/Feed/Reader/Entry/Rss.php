@@ -156,7 +156,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
      */
     public function getAuthors()
     {
-        if (array_key_exists('authors', $this->_data)) {
+        if (isset($this->_data['authors'])) {
             return $this->_data['authors'];
         }
 
@@ -217,7 +217,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
      */
     public function getContent()
     {
-        if (array_key_exists('content', $this->_data)) {
+        if (isset($this->_data['content'])) {
             return $this->_data['content'];
         }
 
@@ -253,7 +253,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
      */
     public function getDateModified()
     {
-        if (array_key_exists('datemodified', $this->_data)) {
+        if (isset($this->_data['datemodified'])) {
             return $this->_data['datemodified'];
         }
 
@@ -316,7 +316,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
      */
     public function getDescription()
     {
-        if (array_key_exists('description', $this->_data)) {
+        if (isset($this->_data['description'])) {
             return $this->_data['description'];
         }
 
@@ -353,7 +353,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
      */
     public function getEnclosure()
     {
-        if (array_key_exists('enclosure', $this->_data)) {
+        if (isset($this->_data['enclosure'])) {
             return $this->_data['enclosure'];
         }
 
@@ -386,7 +386,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
      */
     public function getId()
     {
-        if (array_key_exists('id', $this->_data)) {
+        if (isset($this->_data['id'])) {
             return $this->_data['id'];
         }
 
@@ -429,7 +429,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
      */
     public function getLink($index = 0)
     {
-        if (!array_key_exists('links', $this->_data)) {
+        if (!isset($this->_data['links'])) {
             $this->getLinks();
         }
 
@@ -447,7 +447,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
      */
     public function getLinks()
     {
-        if (array_key_exists('links', $this->_data)) {
+        if (isset($this->_data['links'])) {
             return $this->_data['links'];
         }
 
@@ -480,7 +480,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
      */
     public function getCategories()
     {
-        if (array_key_exists('categories', $this->_data)) {
+        if (isset($this->_data['categories'])) {
             return $this->_data['categories'];
         }
 
@@ -530,7 +530,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
      */
     public function getTitle()
     {
-        if (array_key_exists('title', $this->_data)) {
+        if (isset($this->_data['title'])) {
             return $this->_data['title'];
         }
 
@@ -568,7 +568,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
      */
     public function getCommentCount()
     {
-        if (array_key_exists('commentcount', $this->_data)) {
+        if (isset($this->_data['commentcount'])) {
             return $this->_data['commentcount'];
         }
 
@@ -598,7 +598,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
      */
     public function getCommentLink()
     {
-        if (array_key_exists('commentlink', $this->_data)) {
+        if (isset($this->_data['commentlink'])) {
             return $this->_data['commentlink'];
         }
 
@@ -630,7 +630,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
      */
     public function getCommentFeedLink()
     {
-        if (array_key_exists('commentfeedlink', $this->_data)) {
+        if (isset($this->_data['commentfeedlink'])) {
             return $this->_data['commentfeedlink'];
         }
 

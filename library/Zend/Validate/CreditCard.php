@@ -152,12 +152,12 @@ class Zend_Validate_CreditCard extends Zend_Validate_Abstract
             $options = $temp;
         }
 
-        if (!array_key_exists('type', $options)) {
+        if (!isset($options['type'])) {
             $options['type'] = self::ALL;
         }
 
         $this->setType($options['type']);
-        if (array_key_exists('service', $options)) {
+        if (isset($options['service'])) {
             $this->setService($options['service']);
         }
     }

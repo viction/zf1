@@ -551,7 +551,7 @@ class Zend_View_Helper_Navigation_Menu
         }
 
         // Minimum depth
-        if (array_key_exists('minDepth', $options)) {
+        if (isset($options['minDepth'])) {
             if (null !== $options['minDepth']) {
                 $options['minDepth'] = (int) $options['minDepth'];
             }
@@ -564,7 +564,7 @@ class Zend_View_Helper_Navigation_Menu
         }
 
         // Maximum depth
-        if (array_key_exists('maxDepth', $options)) {
+        if (isset($options['maxDepth'])) {
             if (null !== $options['maxDepth']) {
                 $options['maxDepth'] = (int) $options['maxDepth'];
             }

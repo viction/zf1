@@ -84,11 +84,11 @@ class Zend_Validate_PostCode extends Zend_Validate_Abstract
             }
         } elseif (is_array($options)) {
             // Received
-            if (array_key_exists('locale', $options)) {
+            if (isset($options['locale'])) {
                 $this->setLocale($options['locale']);
             }
 
-            if (array_key_exists('format', $options)) {
+            if (isset($options['format'])) {
                 $this->setFormat($options['format']);
             }
         } elseif ($options instanceof Zend_Locale || is_string($options)) {

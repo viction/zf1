@@ -1561,19 +1561,19 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
      */
     public function setOptions($options)
     {
-        if (array_key_exists('allow', $options)) {
+        if (isset($options['allow'])) {
             $this->setAllow($options['allow']);
         }
 
-        if (array_key_exists('idn', $options)) {
+        if (isset($options['idn'])) {
             $this->setValidateIdn($options['idn']);
         }
 
-        if (array_key_exists('tld', $options)) {
+        if (isset($options['tld'])) {
             $this->setValidateTld($options['tld']);
         }
 
-        if (array_key_exists('ip', $options)) {
+        if (isset($options['ip'])) {
             $this->setIpValidator($options['ip']);
         }
 
@@ -1747,7 +1747,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
                 // First check TLD
                 $matches = array();
                 if (preg_match('/([^.]{2,63})$/iu', end($domainParts), $matches)
-                    || (array_key_exists(end($domainParts), $this->_validIdns))) {
+                    || (isset($this->_validIdns[end($domainParts)]))) {
                     reset($domainParts);
 
                     // Hostname characters are: *(label dot)(label dot label); max 254 chars
@@ -1815,7 +1815,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
                             $status = preg_match($regexChar, $domainPart);
                             if ($status > 0) {
                                 $length = 63;
-                                if (array_key_exists(strtoupper($this->_tld), $this->_idnLength)
+                                if (isset($this->_idnLength[strtoupper($this->_tld)])
                                     && (array_key_exists($regexKey, $this->_idnLength[strtoupper($this->_tld)]))) {
                                     $length = $this->_idnLength[strtoupper($this->_tld)];
                                 }

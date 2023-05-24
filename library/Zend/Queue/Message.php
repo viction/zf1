@@ -105,7 +105,7 @@ class Zend_Queue_Message
      */
     public function __get($key)
     {
-        if (!array_key_exists($key, $this->_data)) {
+        if (!isset($this->_data[$key])) {
             require_once 'Zend/Queue/Exception.php';
             throw new Zend_Queue_Exception("Specified field \"$key\" is not in the message");
         }
@@ -122,7 +122,7 @@ class Zend_Queue_Message
      */
     public function __set($key, $value)
     {
-        if (!array_key_exists($key, $this->_data)) {
+        if (!isset($this->_data[$key])) {
             require_once 'Zend/Queue/Exception.php';
             throw new Zend_Queue_Exception("Specified field \"$key\" is not in the message");
         }
@@ -137,7 +137,7 @@ class Zend_Queue_Message
      */
     public function __isset($key)
     {
-        return array_key_exists($key, $this->_data);
+        return isset($this->_data[$key]);
     }
 
     /*

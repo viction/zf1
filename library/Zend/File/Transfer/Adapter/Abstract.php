@@ -626,7 +626,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
         $this->_messages = array();
         $break           = false;
         foreach($check as $key => $content) {
-            if (array_key_exists('validators', $content) &&
+            if (isset($content['validators']) &&
                 in_array('Zend_Validate_File_Count', $content['validators'])) {
                 $validator = $this->_validators['Zend_Validate_File_Count'];
                 $count     = $content;
@@ -634,7 +634,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
                     continue;
                 }
 
-                if (array_key_exists('destination', $content)) {
+                if (isset($content['destination'])) {
                     $checkit = $content['destination'];
                 } else {
                     $checkit = dirname($content['tmp_name']);
@@ -653,11 +653,11 @@ abstract class Zend_File_Transfer_Adapter_Abstract
 
         foreach ($check as $key => $content) {
             $fileerrors  = array();
-            if (array_key_exists('validators', $content) && $content['validated']) {
+            if (isset($content['validators']) && $content['validated']) {
                 continue;
             }
 
-            if (array_key_exists('validators', $content)) {
+            if (isset($content['validators'])) {
                 foreach ($content['validators'] as $class) {
                     $validator = $this->_validators[$class];
                     if (method_exists($validator, 'setTranslator')) {
@@ -795,7 +795,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
                 }
 
                 if (is_array($spec)) {
-                    if (!array_key_exists('filter', $spec)) {
+                    if (!isset($spec['filter'])) {
                         continue;
                     }
 
@@ -1350,7 +1350,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
     {
         $check           = $this->_getFiles($files);
         foreach ($check as $name => $content) {
-            if (array_key_exists('filters', $content)) {
+            if (isset($content['filters'])) {
                 foreach ($content['filters'] as $class) {
                     $filter = $this->_filters[$class];
                     try {
@@ -1535,7 +1535,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
      */
     protected function _getValidatorIdentifier($name)
     {
-        if (array_key_exists($name, $this->_validators)) {
+        if (isset($this->_validators[$name])) {
             return $name;
         }
 
@@ -1556,7 +1556,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
      */
     protected function _getFilterIdentifier($name)
     {
-        if (array_key_exists($name, $this->_filters)) {
+        if (isset($this->_filters[$name])) {
             return $name;
         }
 

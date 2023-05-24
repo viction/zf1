@@ -99,16 +99,16 @@ class Zend_Validate_StringLength extends Zend_Validate_Abstract
             $options = $temp;
         }
 
-        if (!array_key_exists('min', $options)) {
+        if (!isset($options['min'])) {
             $options['min'] = 0;
         }
 
         $this->setMin($options['min']);
-        if (array_key_exists('max', $options)) {
+        if (isset($options['max'])) {
             $this->setMax($options['max']);
         }
 
-        if (array_key_exists('encoding', $options)) {
+        if (isset($options['encoding'])) {
             $this->setEncoding($options['encoding']);
         }
     }

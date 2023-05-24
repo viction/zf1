@@ -142,10 +142,10 @@ class Zend_Cache_Backend_Libmemcached extends Zend_Cache_Backend implements Zend
         // setup memcached servers
         $servers = array();
         foreach ($this->_options['servers'] as $server) {
-            if (!array_key_exists('port', $server)) {
+            if (!isset($server['port'])) {
                 $server['port'] = self::DEFAULT_PORT;
             }
-            if (!array_key_exists('weight', $server)) {
+            if (!isset($server['weight'])) {
                 $server['weight'] = self::DEFAULT_WEIGHT;
             }
 

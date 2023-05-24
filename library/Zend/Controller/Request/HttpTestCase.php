@@ -225,7 +225,7 @@ class Zend_Controller_Request_HttpTestCase extends Zend_Controller_Request_Http
     public function getHeader($header, $default = null)
     {
         $header = $this->_normalizeHeaderName($header);
-        if (array_key_exists($header, $this->_headers)) {
+        if (isset($this->_headers[$header])) {
             return $this->_headers[$header];
         }
         return $default;

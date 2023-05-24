@@ -297,7 +297,7 @@ abstract class Zend_Tool_Framework_Client_Abstract implements Zend_Tool_Framewor
         // @todo This seems hackish, determine if there is a better way
         $callParameters = array();
         foreach ($methodParameters as $methodParameterName => $methodParameterValue) {
-            if (!array_key_exists($methodParameterName, $requestParameters) && $methodParameterValue['optional'] == false) {
+            if (!isset($requestParameters[$methodParameterName]) && $methodParameterValue['optional'] == false) {
                 if ($this instanceof Zend_Tool_Framework_Client_Interactive_InputInterface) {
                     $promptSting = $this->getMissingParameterPromptString($provider, $actionableMethod['action'], $methodParameterValue['name']);
                     $parameterPromptValue = $this->promptInteractiveInput($promptSting)->getContent();
@@ -311,7 +311,7 @@ abstract class Zend_Tool_Framework_Client_Abstract implements Zend_Tool_Framewor
                     throw new Zend_Tool_Framework_Client_Exception('A required parameter "' . $methodParameterValue['name'] . '" was not supplied.');
                 }
             } else {
-                $callParameters[] = (array_key_exists($methodParameterName, $requestParameters)) ? $requestParameters[$methodParameterName] : $methodParameterValue['default'];
+                $callParameters[] = (isset($requestParameters[$methodParameterName])) ? $requestParameters[$methodParameterName] : $methodParameterValue['default'];
             }
         }
 

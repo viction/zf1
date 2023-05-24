@@ -150,7 +150,7 @@ class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
      */
     public function getTitle()
     {
-        if (array_key_exists('title', $this->_params)) {
+        if (isset($this->_params['title'])) {
             return $this->_params['title'];
         } else {
             return null;
@@ -183,7 +183,7 @@ class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
      */
     public function getTitleExact()
     {
-        if (array_key_exists('title-exact', $this->_params)) {
+        if (isset($this->_params['title-exact'])) {
             return $this->_params['title-exact'];
         } else {
             return false;

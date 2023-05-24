@@ -166,10 +166,10 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
         $root->appendChild($generator);
         $text = $dom->createTextNode($gdata['name']);
         $generator->appendChild($text);
-        if (array_key_exists('uri', $gdata)) {
+        if (isset($gdata['uri'])) {
             $generator->setAttribute('uri', $gdata['uri']);
         }
-        if (array_key_exists('version', $gdata)) {
+        if (isset($gdata['version'])) {
             $generator->setAttribute('version', $gdata['version']);
         }
     }
@@ -203,7 +203,7 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
     protected function _setFeedLinks(DOMDocument $dom, DOMElement $root)
     {
         $flinks = $this->getDataContainer()->getFeedLinks();
-        if(!$flinks || !array_key_exists('atom', $flinks)) {
+        if(!$flinks || !isset($flinks['atom'])) {
             require_once 'Zend/Feed/Exception.php';
             $message = 'Atom 1.0 feed elements SHOULD contain one atom:link '
             . 'element with a rel attribute value of "self".  This is the '
@@ -253,13 +253,13 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
             $root->appendChild($author);
             $text = $dom->createTextNode($data['name']);
             $name->appendChild($text);
-            if (array_key_exists('email', $data)) {
+            if (isset($data['email'])) {
                 $email = $this->_dom->createElement('email');
                 $author->appendChild($email);
                 $text = $dom->createTextNode($data['email']);
                 $email->appendChild($text);
             }
-            if (array_key_exists('uri', $data)) {
+            if (isset($data['uri'])) {
                 $uri = $this->_dom->createElement('uri');
                 $author->appendChild($uri);
                 $text = $dom->createTextNode($data['uri']);

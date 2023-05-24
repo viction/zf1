@@ -182,7 +182,7 @@ class Zend_Amf_Parse_Amf0_Deserializer extends Zend_Amf_Parse_Deserializer
     public function readReference()
     {
         $key = $this->_stream->readInt();
-        if (!array_key_exists($key, $this->_reference)) {
+        if (!isset($this->_reference[$key])) {
             require_once 'Zend/Amf/Exception.php';
             throw new Zend_Amf_Exception('Invalid reference key: '. $key);
         }

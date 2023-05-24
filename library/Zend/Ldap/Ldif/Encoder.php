@@ -277,20 +277,20 @@ class Zend_Ldap_Ldif_Encoder
     {
         $string = '';
         $attributes = array_change_key_case($attributes, CASE_LOWER);
-        if (!$this->_versionWritten && array_key_exists('dn', $attributes) && isset($this->_options['version'])
-                && array_key_exists('objectclass', $attributes)) {
+        if (!$this->_versionWritten && isset($attributes['dn']) && isset($this->_options['version'])
+                && isset($attributes['objectclass'])) {
             $string .= sprintf('version: %d', $this->_options['version']) . PHP_EOL;
             $this->_versionWritten = true;
         }
 
         if (isset($this->_options['sort']) && $this->_options['sort'] === true) {
             ksort($attributes, SORT_STRING);
-            if (array_key_exists('objectclass', $attributes)) {
+            if (isset($attributes['objectclass'])) {
                 $oc = $attributes['objectclass'];
                 unset($attributes['objectclass']);
                 $attributes = array_merge(array('objectclass' => $oc), $attributes);
             }
-            if (array_key_exists('dn', $attributes)) {
+            if (isset($attributes['dn'])) {
                 $dn = $attributes['dn'];
                 unset($attributes['dn']);
                 $attributes = array_merge(array('dn' => $dn), $attributes);

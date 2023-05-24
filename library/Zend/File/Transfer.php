@@ -109,7 +109,7 @@ class Zend_File_Transfer
      */
     public function __call($method, array $options)
     {
-        if (array_key_exists('direction', $options)) {
+        if (isset($options['direction'])) {
             $direction = (integer) $options['direction'];
         } else {
             $direction = 0;

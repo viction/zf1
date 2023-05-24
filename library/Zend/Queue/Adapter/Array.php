@@ -69,7 +69,7 @@ class Zend_Queue_Adapter_Array extends Zend_Queue_Adapter_AdapterAbstract
      */
     public function isExists($name)
     {
-        return array_key_exists($name, $this->_data);
+        return isset($this->_data[$name]);
     }
 
     /**

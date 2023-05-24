@@ -67,7 +67,7 @@ class Zend_Feed_Reader_Extension_DublinCore_Entry
      */
     public function getAuthors()
     {
-        if (array_key_exists('authors', $this->_data)) {
+        if (isset($this->_data['authors'])) {
             return $this->_data['authors'];
         }
 
@@ -110,7 +110,7 @@ class Zend_Feed_Reader_Extension_DublinCore_Entry
      */
     public function getCategories()
     {
-        if (array_key_exists('categories', $this->_data)) {
+        if (isset($this->_data['categories'])) {
             return $this->_data['categories'];
         }
 
@@ -155,7 +155,7 @@ class Zend_Feed_Reader_Extension_DublinCore_Entry
      */
     public function getDescription()
     {
-        if (array_key_exists('description', $this->_data)) {
+        if (isset($this->_data['description'])) {
             return $this->_data['description'];
         }
 
@@ -182,7 +182,7 @@ class Zend_Feed_Reader_Extension_DublinCore_Entry
      */
     public function getId()
     {
-        if (array_key_exists('id', $this->_data)) {
+        if (isset($this->_data['id'])) {
             return $this->_data['id'];
         }
 
@@ -205,7 +205,7 @@ class Zend_Feed_Reader_Extension_DublinCore_Entry
      */
     public function getTitle()
     {
-        if (array_key_exists('title', $this->_data)) {
+        if (isset($this->_data['title'])) {
             return $this->_data['title'];
         }
 
@@ -232,7 +232,7 @@ class Zend_Feed_Reader_Extension_DublinCore_Entry
      */
     public function getDate()
     {
-        if (array_key_exists('date', $this->_data)) {
+        if (isset($this->_data['date'])) {
             return $this->_data['date'];
         }
 

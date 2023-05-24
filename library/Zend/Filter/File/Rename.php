@@ -143,7 +143,7 @@ class Zend_Filter_File_Rename implements Zend_Filter_Interface
     {
         $file = $this->_getFileName($value);
         
-        if (!is_array($file) || !array_key_exists('source', $file) || !array_key_exists('target', $file)) {
+        if (!is_array($file) || !isset($file['source', $file) || !array_key_exists('target'])) {
             return $value;
         }
         

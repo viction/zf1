@@ -406,7 +406,7 @@ class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
             'memberIsDn'  => true
         );
         foreach ($adapterOptions as $key => $value) {
-            if (array_key_exists($key, $options)) {
+            if (isset($options[$key])) {
                 $value = $options[$key];
                 unset($options[$key]);
                 switch ($key) {

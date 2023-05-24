@@ -52,7 +52,7 @@ class Zend_View_Helper_Form extends Zend_View_Helper_FormElement
             $id = '';
         }
 
-        if (array_key_exists('id', $attribs) && empty($attribs['id'])) {
+        if (isset($attribs['id']) && empty($attribs['id'])) {
             unset($attribs['id']);
         }
         
@@ -62,11 +62,11 @@ class Zend_View_Helper_Form extends Zend_View_Helper_FormElement
             $name = '';
         }
         
-        if ($this->_isHtml5() && array_key_exists('action', $attribs) && !$attribs['action']) {
+        if ($this->_isHtml5() && isset($attribs['action']) && !$attribs['action']) {
             unset($attribs['action']);
         }
 
-        if ( array_key_exists('name', $attribs) && empty($attribs['id'])) {
+        if ( isset($attribs['name']) && empty($attribs['id'])) {
             unset($attribs['id']);
         }
 

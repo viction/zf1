@@ -74,7 +74,7 @@ class Zend_Dojo_Form_Decorator_DijitElement extends Zend_Form_Decorator_ViewHelp
     {
         if (null === $this->_attribs) {
             $this->_attribs = parent::getElementAttribs();
-            if (array_key_exists('dijitParams', $this->_attribs)) {
+            if (isset($this->_attribs['dijitParams'])) {
                 $this->setDijitParams($this->_attribs['dijitParams']);
                 unset($this->_attribs['dijitParams']);
             }
@@ -118,7 +118,7 @@ class Zend_Dojo_Form_Decorator_DijitElement extends Zend_Form_Decorator_ViewHelp
     {
         $this->getElementAttribs();
         $key = (string) $key;
-        if (array_key_exists($key, $this->_dijitParams)) {
+        if (isset($this->_dijitParams[$key])) {
             return $this->_dijitParams[$key];
         }
 
@@ -176,7 +176,7 @@ class Zend_Dojo_Form_Decorator_DijitElement extends Zend_Form_Decorator_ViewHelp
         }
         $attribs['id'] = $id;
 
-        if (array_key_exists('options', $attribs)) {
+        if (isset($attribs['options'])) {
                $options = $attribs['options'];
         }
 

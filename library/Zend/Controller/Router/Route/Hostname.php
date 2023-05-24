@@ -221,7 +221,7 @@ class Zend_Controller_Router_Route_Hostname extends Zend_Controller_Router_Route
 
             foreach ($host as $pos => $hostPart) {
                 // Host is longer than a route, it's not a match
-                if (!array_key_exists($pos, $this->_parts)) {
+                if (!isset($this->_parts[$pos])) {
                     return false;
                 }
 
@@ -261,7 +261,7 @@ class Zend_Controller_Router_Route_Hostname extends Zend_Controller_Router_Route
 
         // Check if all map variables have been initialized
         foreach ($this->_variables as $var) {
-            if (!array_key_exists($var, $return)) {
+            if (!isset($return[$var])) {
                 return false;
             }
         }
@@ -290,7 +290,7 @@ class Zend_Controller_Router_Route_Hostname extends Zend_Controller_Router_Route
             $name = isset($this->_variables[$key]) ? $this->_variables[$key] : null;
 
             $useDefault = false;
-            if (isset($name) && array_key_exists($name, $data) && $data[$name] === null) {
+            if (isset($name) && isset($data[$name]) && $data[$name] === null) {
                 $useDefault = true;
             }
 

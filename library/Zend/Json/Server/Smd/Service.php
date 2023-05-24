@@ -320,11 +320,11 @@ class Zend_Json_Server_Smd_Service
             if (!is_array($options)) {
                 continue;
             }
-            if (!array_key_exists('type', $options)) {
+            if (!isset($options['type'])) {
                 continue;
             }
             $type  = $options['type'];
-            $order = (array_key_exists('order', $options)) ? $options['order'] : null;
+            $order = (isset($options['order'])) ? $options['order'] : null;
             $this->addParam($type, $options, $order);
         }
         return $this;
@@ -458,7 +458,7 @@ class Zend_Json_Server_Smd_Service
             throw new Zend_Json_Server_Exception('Invalid param type provided ("' . $type .'")');
         }
 
-        if (!array_key_exists($type, $this->_paramMap)) {
+        if (!isset($this->_paramMap[$type])) {
             $type = 'object';
         }
 

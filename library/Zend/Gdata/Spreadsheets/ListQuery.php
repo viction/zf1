@@ -183,7 +183,7 @@ class Zend_Gdata_Spreadsheets_ListQuery extends Zend_Gdata_Query
      */
     public function getSpreadsheetQuery()
     {
-        if (array_key_exists('sq', $this->_params)) {
+        if (isset($this->_params['sq'])) {
             return $this->_params['sq'];
         } else {
             return null;
@@ -211,7 +211,7 @@ class Zend_Gdata_Spreadsheets_ListQuery extends Zend_Gdata_Query
      */
     public function getOrderBy()
     {
-        if (array_key_exists('orderby', $this->_params)) {
+        if (isset($this->_params['orderby'])) {
             return $this->_params['orderby'];
         } else {
             return null;
@@ -241,7 +241,7 @@ class Zend_Gdata_Spreadsheets_ListQuery extends Zend_Gdata_Query
     {
 
 
-        if (array_key_exists('reverse', $this->_params)) {
+        if (isset($this->_params['reverse'])) {
             return $this->_params['reverse'];
         } else {
             return null;

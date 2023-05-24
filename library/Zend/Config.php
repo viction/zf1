@@ -128,7 +128,7 @@ class Zend_Config implements Countable, Iterator
     public function get($name, $default = null)
     {
         $result = $default;
-        if (array_key_exists($name, $this->_data)) {
+        if (isset($this->_data[$name])) {
             $result = $this->_data[$name];
         }
         return $result;
@@ -341,7 +341,7 @@ class Zend_Config implements Countable, Iterator
     public function merge(Zend_Config $merge)
     {
         foreach($merge as $key => $item) {
-            if(array_key_exists($key, $this->_data)) {
+            if(isset($this->_data[$key])) {
                 if($item instanceof Zend_Config && $this->$key instanceof Zend_Config) {
                     $this->$key = $this->$key->merge(new Zend_Config($item->toArray(), !$this->readOnly()));
                 } else {
@@ -424,7 +424,7 @@ class Zend_Config implements Countable, Iterator
     {
         // detect circular section inheritance
         $extendedSectionCurrent = $extendedSection;
-        while (array_key_exists($extendedSectionCurrent, $this->_extends)) {
+        while (isset($this->_extends[$extendedSectionCurrent])) {
             if ($this->_extends[$extendedSectionCurrent] == $extendingSection) {
                 /** @see Zend_Config_Exception */
                 require_once 'Zend/Config/Exception.php';

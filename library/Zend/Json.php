@@ -293,7 +293,7 @@ class Zend_Json
             foreach ($children as $child) {
                 $childname = $child->getName();
                 $element = self::_processXml($child,$ignoreXmlAttributes,$recursionDepth+1);
-                if (array_key_exists($childname, $childArray)) {
+                if (isset($childArray[$childname])) {
                     if (empty($subChild[$childname])) {
                         $childArray[$childname] = array($childArray[$childname]);
                         $subChild[$childname] = true;

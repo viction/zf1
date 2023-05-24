@@ -146,7 +146,7 @@ class Zend_Log
             throw new Zend_Log_Exception('Configuration must be an array or instance of Zend_Config');
         }
 
-        if (array_key_exists('className', $config)) {
+        if (isset($config['className'])) {
             $class = $config['className'];
             unset($config['className']);
         } else {
@@ -161,7 +161,7 @@ class Zend_Log
             throw new Zend_Log_Exception('Passed className does not belong to a descendant of Zend_Log');
         }
 
-        if (array_key_exists('timestampFormat', $config)) {
+        if (isset($config['timestampFormat'])) {
             if (null != $config['timestampFormat'] && '' != $config['timestampFormat']) {
                 $log->setTimestampFormat($config['timestampFormat']);
             }

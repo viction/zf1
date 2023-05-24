@@ -167,10 +167,10 @@ class Zend_Server_Method_Prototype
         if (!is_string($index) && !is_numeric($index)) {
             return null;
         }
-        if (array_key_exists($index, $this->_parameterNameMap)) {
+        if (isset($this->_parameterNameMap[$index])) {
             $index = $this->_parameterNameMap[$index];
         }
-        if (array_key_exists($index, $this->_parameters)) {
+        if (isset($this->_parameters[$index])) {
             return $this->_parameters[$index];
         }
         return null;

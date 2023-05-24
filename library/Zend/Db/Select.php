@@ -688,7 +688,7 @@ class Zend_Db_Select
     public function getPart($part)
     {
         $part = strtolower($part);
-        if (!array_key_exists($part, $this->_parts)) {
+        if (!isset($this->_parts[$part])) {
             require_once 'Zend/Db/Select/Exception.php';
             throw new Zend_Db_Select_Exception("Invalid Select part '$part'");
         }

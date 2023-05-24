@@ -61,7 +61,7 @@ class Zend_Dojo_View_Helper_SimpleTextarea extends Zend_Dojo_View_Helper_Dijit
      */
     public function simpleTextarea($id, $value = null, array $params = array(), array $attribs = array())
     {
-        if (!array_key_exists('id', $attribs)) {
+        if (!isset($attribs['id'])) {
             $attribs['id']    = $id;
         }
         $attribs['name']  = $id;

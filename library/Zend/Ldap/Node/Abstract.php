@@ -82,7 +82,7 @@ abstract class Zend_Ldap_Node_Abstract implements ArrayAccess, Countable
      */
     protected function _loadData(array $data, $fromDataSource)
     {
-        if (array_key_exists('dn', $data)) {
+        if (isset($data['dn'])) {
             unset($data['dn']);
         }
         ksort($data, SORT_STRING);

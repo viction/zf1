@@ -322,7 +322,7 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader34 extends PHPUnit_Framework_Co
     {
         $headers = $response->sendHeaders();
         $header  = strtolower($header);
-        if (array_key_exists($header, $headers)) {
+        if (isset($headers[$header])) {
             return $headers[$header];
         }
         return null;

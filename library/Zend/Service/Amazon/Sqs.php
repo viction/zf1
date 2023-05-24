@@ -102,7 +102,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
      */
     protected function _setEndpoint($region)
     {
-        if (array_key_exists($region, $this->_sqsEndpoints)) {
+        if (isset($this->_sqsEndpoints[$region])) {
             $this->_sqsEndpoint = $this->_sqsEndpoints[$region];
         } else {
             throw new Zend_Service_Amazon_Sqs_Exception('Invalid SQS region specified.');
@@ -120,7 +120,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
     public function setEndpoint($region)
     {
         if (!empty($region)) {
-            if (array_key_exists($region, $this->_sqsEndpoints)) {
+            if (isset($this->_sqsEndpoints[$region])) {
                 $this->_sqsEndpoint = $this->_sqsEndpoints[$region];
             } else {
                 $this->_sqsEndpoints[$region] = "sqs.$region.amazonaws.com";

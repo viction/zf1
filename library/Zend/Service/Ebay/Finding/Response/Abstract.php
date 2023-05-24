@@ -177,7 +177,7 @@ abstract class Zend_Service_Ebay_Finding_Response_Abstract extends Zend_Service_
         if (null === $name) {
             return $this->_options;
         }
-        if (array_key_exists($name, $this->_options)) {
+        if (isset($this->_options[$name])) {
             return $this->_options[$name];
         }
         return null;

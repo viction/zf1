@@ -251,7 +251,7 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
      */
     public function getAttribute($name)
     {
-        return (array_key_exists($name, $this->_attributes)) ? $this->_attributes[$name] : null;
+        return (isset($this->_attributes[$name])) ? $this->_attributes[$name] : null;
     }
 
     /**
@@ -262,7 +262,7 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
      */
     public function hasAttribute($name)
     {
-        return array_key_exists($name, $this->_attributes);
+        return isset($this->_attributes[$name]);
     }
 
     /**

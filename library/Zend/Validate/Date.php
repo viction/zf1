@@ -87,18 +87,18 @@ class Zend_Validate_Date extends Zend_Validate_Abstract
             $options = $temp;
         }
 
-        if (array_key_exists('format', $options)) {
+        if (isset($options['format'])) {
             $this->setFormat($options['format']);
         }
 
-        if (!array_key_exists('locale', $options)) {
+        if (!isset($options['locale'])) {
             require_once 'Zend/Registry.php';
             if (Zend_Registry::isRegistered('Zend_Locale')) {
                 $options['locale'] = Zend_Registry::get('Zend_Locale');
             }
         }
 
-        if (array_key_exists('locale', $options)) {
+        if (isset($options['locale'])) {
             $this->setLocale($options['locale']);
         }
     }

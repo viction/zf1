@@ -172,7 +172,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
          */
         public function offsetExists($index)
         {
-            return array_key_exists($index, $this->data);
+            return isset($this->data[$index]);
         }
 
         /**

@@ -153,38 +153,38 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
         $this->setFilterPath(null);
 
         // user-defined escaping callback
-        if (array_key_exists('escape', $config)) {
+        if (isset($config['escape'])) {
             $this->setEscape($config['escape']);
         }
 
         // encoding
-        if (array_key_exists('encoding', $config)) {
+        if (isset($config['encoding'])) {
             $this->setEncoding($config['encoding']);
         }
 
         // base path
-        if (array_key_exists('basePath', $config)) {
+        if (isset($config['basePath'])) {
             $prefix = 'Zend_View';
-            if (array_key_exists('basePathPrefix', $config)) {
+            if (isset($config['basePathPrefix'])) {
                 $prefix = $config['basePathPrefix'];
             }
             $this->setBasePath($config['basePath'], $prefix);
         }
 
         // user-defined view script path
-        if (array_key_exists('scriptPath', $config)) {
+        if (isset($config['scriptPath'])) {
             $this->addScriptPath($config['scriptPath']);
         }
 
         // user-defined helper path
-        if (array_key_exists('helperPath', $config)) {
+        if (isset($config['helperPath'])) {
             if (is_array($config['helperPath'])) {
                 foreach ($config['helperPath'] as $prefix => $path) {
                     $this->addHelperPath($path, $prefix);
                 }
             } else {
                 $prefix = 'Zend_View_Helper';
-                if (array_key_exists('helperPathPrefix', $config)) {
+                if (isset($config['helperPathPrefix'])) {
                     $prefix = $config['helperPathPrefix'];
                 }
                 $this->addHelperPath($config['helperPath'], $prefix);
@@ -192,14 +192,14 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
         }
 
         // user-defined filter path
-        if (array_key_exists('filterPath', $config)) {
+        if (isset($config['filterPath'])) {
             if (is_array($config['filterPath'])) {
                 foreach ($config['filterPath'] as $prefix => $path) {
                     $this->addFilterPath($path, $prefix);
                 }
             } else {
                 $prefix = 'Zend_View_Filter';
-                if (array_key_exists('filterPathPrefix', $config)) {
+                if (isset($config['filterPathPrefix'])) {
                     $prefix = $config['filterPathPrefix'];
                 }
                 $this->addFilterPath($config['filterPath'], $prefix);
@@ -207,21 +207,21 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
         }
 
         // user-defined filters
-        if (array_key_exists('filter', $config)) {
+        if (isset($config['filter'])) {
             $this->addFilter($config['filter']);
         }
 
         // strict vars
-        if (array_key_exists('strictVars', $config)) {
+        if (isset($config['strictVars'])) {
             $this->strictVars($config['strictVars']);
         }
 
         // LFI protection flag
-        if (array_key_exists('lfiProtectionOn', $config)) {
+        if (isset($config['lfiProtectionOn'])) {
             $this->setLfiProtection($config['lfiProtectionOn']);
         }
 
-        if (array_key_exists('assign', $config)
+        if (isset($config['assign'])
             && is_array($config['assign'])
         ) {
             foreach ($config['assign'] as $key => $value) {
@@ -499,7 +499,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
             throw $e;
         }
 
-        if (!array_key_exists($type, $this->_loaders)) {
+        if (!isset($this->_loaders[$type])) {
             $prefix     = 'Zend_View_';
             $pathPrefix = 'Zend/View/';
 

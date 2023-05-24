@@ -116,7 +116,7 @@ class Zend_View_Helper_Placeholder_Registry
     public function containerExists($key)
     {
         $key = (string) $key;
-        $return =  array_key_exists($key, $this->_items);
+        $return =  isset($this->_items[$key]);
         return $return;
     }
 

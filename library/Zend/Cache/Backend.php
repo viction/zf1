@@ -76,12 +76,12 @@ class Zend_Cache_Backend
     public function setDirectives($directives)
     {
         if (!is_array($directives)) Zend_Cache::throwException('Directives parameter must be an array');
-        while (list($name, $value) = each($directives)) {
+        foreach($directives as $name => $value) {
             if (!is_string($name)) {
                 Zend_Cache::throwException("Incorrect option name : $name");
             }
             $name = strtolower($name);
-            if (array_key_exists($name, $this->_directives)) {
+            if (isset($this->_directives[$name])) {
                 $this->_directives[$name] = $value;
             }
 
@@ -104,7 +104,7 @@ class Zend_Cache_Backend
             Zend_Cache::throwException("Incorrect option name : $name");
         }
         $name = strtolower($name);
-        if (array_key_exists($name, $this->_options)) {
+        if (isset($this->_options[$name])) {
             $this->_options[$name] = $value;
         }
     }
@@ -120,11 +120,11 @@ class Zend_Cache_Backend
     {
         $name = strtolower($name);
 
-        if (array_key_exists($name, $this->_options)) {
+        if (isset($this->_options[$name])) {
             return $this->_options[$name];
         }
 
-        if (array_key_exists($name, $this->_directives)) {
+        if (isset($this->_directives[$name])) {
             return $this->_directives[$name];
         }
 

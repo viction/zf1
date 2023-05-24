@@ -246,7 +246,7 @@ class Zend_Session extends Zend_Session_Abstract
         }
 
         if ($optionName) {
-            if (array_key_exists($optionName, $options)) {
+            if (isset($options[$optionName])) {
                 return $options[$optionName];
             }
             return null;

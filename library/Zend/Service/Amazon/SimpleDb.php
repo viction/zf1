@@ -203,7 +203,7 @@ class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
                 $params['Attribute.' . $index . '.Value'] = $value;
 
                 // Check if it should be replaced
-                if(array_key_exists($attributeName, $replace) && $replace[$attributeName]) {
+                if(isset($replace[$attributeName]) && $replace[$attributeName]) {
                     $params['Attribute.' . $index . '.Replace'] = 'true';
                 }
                 $index++;

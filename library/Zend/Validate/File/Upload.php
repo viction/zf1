@@ -162,7 +162,7 @@ class Zend_Validate_File_Upload extends Zend_Validate_Abstract
     public function isValid($value, $file = null)
     {
         $this->_messages = null;
-        if (array_key_exists($value, $this->_files)) {
+        if (isset($this->_files[$value])) {
             $files[$value] = $this->_files[$value];
         } else {
             foreach ($this->_files as $file => $content) {

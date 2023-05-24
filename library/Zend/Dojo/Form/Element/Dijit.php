@@ -94,7 +94,7 @@ abstract class Zend_Dojo_Form_Element_Dijit extends Zend_Form_Element
      */
     public function hasDijitParam($key)
     {
-        return array_key_exists($key, $this->dijitParams);
+        return isset($this->dijitParams[$key]);
     }
 
     /**
@@ -131,7 +131,7 @@ abstract class Zend_Dojo_Form_Element_Dijit extends Zend_Form_Element
     public function removeDijitParam($key)
     {
         $key = (string) $key;
-        if (array_key_exists($key, $this->dijitParams)) {
+        if (isset($this->dijitParams[$key])) {
             unset($this->dijitParams[$key]);
         }
         return $this;

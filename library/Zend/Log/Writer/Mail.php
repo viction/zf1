@@ -194,7 +194,7 @@ class Zend_Log_Writer_Mail extends Zend_Log_Writer_Abstract
             $mailClass = $config['mail'];
         }
 
-        if (!array_key_exists('charset', $config)) {
+        if (!isset($config['charset'])) {
             $config['charset'] = null;
         }
         $mail = new $mailClass($config['charset']);

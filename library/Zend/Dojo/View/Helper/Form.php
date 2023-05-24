@@ -64,7 +64,7 @@ class Zend_Dojo_View_Helper_Form extends Zend_Dojo_View_Helper_Dijit
         if (!is_array($attribs)) {
             $attribs = (array) $attribs;
         }
-        if (array_key_exists('id', $attribs)) {
+        if (isset($attribs['id'])) {
             $attribs['name'] = $id;
         } else {
             $attribs['id'] = $id;

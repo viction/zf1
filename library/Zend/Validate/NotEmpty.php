@@ -99,7 +99,7 @@ class Zend_Validate_NotEmpty extends Zend_Validate_Abstract
             $options = $temp;
         }
 
-        if (is_array($options) && array_key_exists('type', $options)) {
+        if (is_array($options) && isset($options['type'])) {
             $this->setType($options['type']);
         }
     }

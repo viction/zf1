@@ -102,11 +102,11 @@ class Zend_Filter_PregReplace implements Zend_Filter_Interface
             $options = $temp;
         }
 
-        if (array_key_exists('match', $options)) {
+        if (isset($options['match'])) {
             $this->setMatchPattern($options['match']);
         }
 
-        if (array_key_exists('replace', $options)) {
+        if (isset($options['replace'])) {
             $this->setReplacement($options['replace']);
         }
     }

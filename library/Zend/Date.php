@@ -2813,15 +2813,15 @@ class Zend_Date extends Zend_Date_DateObject
                 }
             }
 
-            if (!array_key_exists('hour', $parsed)) {
+            if (!isset($parsed['hour'])) {
                 $parsed['hour'] = 0;
             }
 
-            if (!array_key_exists('minute', $parsed)) {
+            if (!isset($parsed['minute'])) {
                 $parsed['minute'] = 0;
             }
 
-            if (!array_key_exists('second', $parsed)) {
+            if (!isset($parsed['second'])) {
                 $parsed['second'] = 0;
             }
 
@@ -2978,15 +2978,15 @@ class Zend_Date extends Zend_Date_DateObject
                 }
             }
 
-            if (!array_key_exists('day', $parsed)) {
+            if (!isset($parsed['day'])) {
                 $parsed['day'] = 1;
             }
 
-            if (!array_key_exists('month', $parsed)) {
+            if (!isset($parsed['month'])) {
                 $parsed['month'] = 1;
             }
 
-            if (!array_key_exists('year', $parsed)) {
+            if (!isset($parsed['year'])) {
                 $parsed['year'] = 0;
             }
 

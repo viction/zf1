@@ -171,31 +171,31 @@ class Zend_Feed_Pubsubhubbub_Subscriber
             throw new Zend_Feed_Pubsubhubbub_Exception('Array or Zend_Config object'
                 . ' expected, got ' . gettype($config));
         }
-        if (array_key_exists('hubUrls', $config)) {
+        if (isset($config['hubUrls'])) {
             $this->addHubUrls($config['hubUrls']);
         }
-        if (array_key_exists('callbackUrl', $config)) {
+        if (isset($config['callbackUrl'])) {
             $this->setCallbackUrl($config['callbackUrl']);
         }
-        if (array_key_exists('topicUrl', $config)) {
+        if (isset($config['topicUrl'])) {
             $this->setTopicUrl($config['topicUrl']);
         }
-        if (array_key_exists('storage', $config)) {
+        if (isset($config['storage'])) {
             $this->setStorage($config['storage']);
         }
-        if (array_key_exists('leaseSeconds', $config)) {
+        if (isset($config['leaseSeconds'])) {
             $this->setLeaseSeconds($config['leaseSeconds']);
         }
-        if (array_key_exists('parameters', $config)) {
+        if (isset($config['parameters'])) {
             $this->setParameters($config['parameters']);
         }
-        if (array_key_exists('authentications', $config)) {
+        if (isset($config['authentications'])) {
             $this->addAuthentications($config['authentications']);
         }
-        if (array_key_exists('usePathParameter', $config)) {
+        if (isset($config['usePathParameter'])) {
             $this->usePathParameter($config['usePathParameter']);
         }
-        if (array_key_exists('preferredVerificationMode', $config)) {
+        if (isset($config['preferredVerificationMode'])) {
             $this->setPreferredVerificationMode(
                 $config['preferredVerificationMode']
             );
@@ -519,7 +519,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber
             throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "name"'
                 . ' of "' . $name . '" must be a non-empty string');
         }
-        if (array_key_exists($name, $this->_parameters)) {
+        if (isset($this->_parameters[$name])) {
             unset($this->_parameters[$name]);
         }
         return $this;
@@ -642,7 +642,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber
         $this->_errors = array();
         $this->_asyncHubs = array();
         foreach ($hubs as $url) {
-            if (array_key_exists($url, $this->_authentications)) {
+            if (isset($this->_authentications[$url])) {
                 $auth = $this->_authentications[$url];
                 $client->setAuth($auth[0], $auth[1]);
             }

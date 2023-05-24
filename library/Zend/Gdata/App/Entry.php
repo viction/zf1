@@ -254,8 +254,8 @@ class Zend_Gdata_App_Entry extends Zend_Gdata_App_FeedEntryParent
         // Append ETag, if present (Gdata v2 and above, only) and doesn't
         // conflict with existing headers
         if ($this->_etag != null
-                && !array_key_exists('If-Match', $extraHeaders)
-                && !array_key_exists('If-None-Match', $extraHeaders)) {
+                && !isset($extraHeaders['If-Match'])
+                && !isset($extraHeaders['If-None-Match'])) {
             $extraHeaders['If-None-Match'] = $this->_etag;
         }
 

@@ -68,11 +68,11 @@ class Zend_Application_Resource_Session extends Zend_Application_Resource_Resour
     {
         if (!$this->_saveHandler instanceof Zend_Session_SaveHandler_Interface) {
             if (is_array($this->_saveHandler)) {
-                if (!array_key_exists('class', $this->_saveHandler)) {
+                if (!isset($this->_saveHandler['class'])) {
                     throw new Zend_Application_Resource_Exception('Session save handler class not provided in options');
                 }
                 $options = array();
-                if (array_key_exists('options', $this->_saveHandler)) {
+                if (isset($this->_saveHandler['options'])) {
                     $options = $this->_saveHandler['options'];
                 }
                 $this->_saveHandler = $this->_saveHandler['class'];

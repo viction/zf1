@@ -283,7 +283,7 @@ class Zend_Ldap
         );
 
         foreach ($permittedOptions as $key => $val) {
-            if (array_key_exists($key, $options)) {
+            if (isset($options[$key])) {
                 $val = $options[$key];
                 unset($options[$key]);
                 /* Enforce typing. This eliminates issues like Zend_Config_Ini
@@ -1167,7 +1167,7 @@ class Zend_Ldap
      */
     public static function prepareLdapEntryArray(array &$entry)
     {
-        if (array_key_exists('dn', $entry)) unset($entry['dn']);
+        if (isset($entry['dn'])) unset($entry['dn']);
         foreach ($entry as $key => $value) {
             if (is_array($value)) {
                 foreach ($value as $i => $v) {
@@ -1224,7 +1224,7 @@ class Zend_Ldap
         $rdnParts = $dn->getRdn(Zend_Ldap_Dn::ATTR_CASEFOLD_LOWER);
         foreach ($rdnParts as $key => $value) {
             $value = Zend_Ldap_Dn::unescapeValue($value);
-            if (!array_key_exists($key, $entry)) {
+            if (!isset($entry[$key])) {
                 $entry[$key] = array($value);
             } else if (!in_array($value, $entry[$key])) {
                 $entry[$key] = array_merge(array($value), $entry[$key]);
@@ -1233,7 +1233,7 @@ class Zend_Ldap
         $adAttributes = array('distinguishedname', 'instancetype', 'name', 'objectcategory',
             'objectguid', 'usnchanged', 'usncreated', 'whenchanged', 'whencreated');
         foreach ($adAttributes as $attr) {
-            if (array_key_exists($attr, $entry)) {
+            if (isset($entry[$attr])) {
                 unset($entry[$attr]);
             }
         }
@@ -1267,7 +1267,7 @@ class Zend_Ldap
         $rdnParts = $dn->getRdn(Zend_Ldap_Dn::ATTR_CASEFOLD_LOWER);
         foreach ($rdnParts as $key => $value) {
             $value = Zend_Ldap_Dn::unescapeValue($value);
-            if (array_key_exists($key, $entry) && !in_array($value, $entry[$key])) {
+            if (isset($entry[$key]) && !in_array($value, $entry[$key])) {
                 $entry[$key] = array_merge(array($value), $entry[$key]);
             }
         }
@@ -1275,7 +1275,7 @@ class Zend_Ldap
         $adAttributes = array('distinguishedname', 'instancetype', 'name', 'objectcategory',
             'objectguid', 'usnchanged', 'usncreated', 'whenchanged', 'whencreated');
         foreach ($adAttributes as $attr) {
-            if (array_key_exists($attr, $entry)) {
+            if (isset($entry[$attr])) {
                 unset($entry[$attr]);
             }
         }

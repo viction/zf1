@@ -231,7 +231,7 @@ class Zend_Http_Client_Adapter_Curl implements Zend_Http_Client_Adapter_Interfac
         curl_setopt($this->_curl, $constant, $connectTimeout);
 
         // Set request timeout (once connection is established)
-        if (array_key_exists('request_timeout', $this->_config)) {
+        if (isset($this->_config['request_timeout'])) {
             $requestTimeout  = $this->_config['request_timeout'];
             $constant        = CURLOPT_TIMEOUT;
             if (defined('CURLOPT_TIMEOUT_MS')) {

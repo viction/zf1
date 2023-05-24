@@ -74,7 +74,7 @@ abstract class Zend_Service_Ebay_Finding_Abstract
     {
         if (null === $attribute) {
             // all attributes
-            if (array_key_exists($tag, $this->_attributes)) {
+            if (isset($this->_attributes[$tag])) {
                 return $this->_attributes[$tag];
             }
             return array();

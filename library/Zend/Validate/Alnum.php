@@ -74,7 +74,7 @@ class Zend_Validate_Alnum extends Zend_Validate_Abstract
         }
 
         if (is_array($allowWhiteSpace)) {
-            if (array_key_exists('allowWhiteSpace', $allowWhiteSpace)) {
+            if (isset($allowWhiteSpace['allowWhiteSpace'])) {
                 $allowWhiteSpace = $allowWhiteSpace['allowWhiteSpace'];
             } else {
                 $allowWhiteSpace = false;

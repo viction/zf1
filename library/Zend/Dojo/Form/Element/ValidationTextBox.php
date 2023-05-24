@@ -148,7 +148,7 @@ class Zend_Dojo_Form_Element_ValidationTextBox extends Zend_Dojo_Form_Element_Te
     public function hasConstraint($key)
     {
         $constraints = $this->getConstraints();
-        return array_key_exists((string)$key, $constraints);
+        return isset($constraints[(string)$key]);
     }
 
     /**

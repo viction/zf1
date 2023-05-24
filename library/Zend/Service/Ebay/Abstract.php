@@ -91,7 +91,7 @@ abstract class Zend_Service_Ebay_Abstract
      */
     public function hasOption($name)
     {
-        return array_key_exists($name, $this->_options);
+        return isset($this->_options[$name]);
     }
 
     /**
@@ -203,7 +203,7 @@ abstract class Zend_Service_Ebay_Abstract
                 // check for tag representation, like <name att="sometinhg"></value>
                 // empty key refers to text value
                 // when there is a root tag, attributes receive flags
-                $hasAttribute = array_key_exists('', $value);
+                $hasAttribute = isset($value['']);
                 foreach ($value as $subName => $subValue) {
                     // generate new key name
                     if ($isAssoc) {

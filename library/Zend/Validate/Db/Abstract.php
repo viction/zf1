@@ -122,30 +122,30 @@ abstract class Zend_Validate_Db_Abstract extends Zend_Validate_Abstract
             $options = $temp;
         }
 
-        if (!array_key_exists('table', $options) && !array_key_exists('schema', $options)) {
+        if (!isset($options['table', $options) && !array_key_exists('schema'])) {
             require_once 'Zend/Validate/Exception.php';
             throw new Zend_Validate_Exception('Table or Schema option missing!');
         }
 
-        if (!array_key_exists('field', $options)) {
+        if (!isset($options['field'])) {
             require_once 'Zend/Validate/Exception.php';
             throw new Zend_Validate_Exception('Field option missing!');
         }
 
-        if (array_key_exists('adapter', $options)) {
+        if (isset($options['adapter'])) {
             $this->setAdapter($options['adapter']);
         }
 
-        if (array_key_exists('exclude', $options)) {
+        if (isset($options['exclude'])) {
             $this->setExclude($options['exclude']);
         }
 
         $this->setField($options['field']);
-        if (array_key_exists('table', $options)) {
+        if (isset($options['table'])) {
             $this->setTable($options['table']);
         }
 
-        if (array_key_exists('schema', $options)) {
+        if (isset($options['schema'])) {
             $this->setSchema($options['schema']);
         }
     }

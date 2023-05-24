@@ -286,7 +286,7 @@ abstract class Zend_Feed_Reader_FeedAbstract implements Zend_Feed_Reader_FeedInt
      */
     public function getExtension($name)
     {
-        if (array_key_exists($name . '_Feed', $this->_extensions)) {
+        if (isset($this->_extensions[$name . '_Feed'])) {
             return $this->_extensions[$name . '_Feed'];
         }
         return null;

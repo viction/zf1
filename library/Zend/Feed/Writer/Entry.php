@@ -84,7 +84,7 @@ class Zend_Feed_Writer_Entry
     {
         $author = array();
         if (is_array($name)) {
-            if (!array_key_exists('name', $name)
+            if (!isset($name['name'])
                 || empty($name['name'])
                 || !is_string($name['name'])
             ) {
@@ -170,7 +170,7 @@ class Zend_Feed_Writer_Entry
      */
     public function getEncoding()
     {
-        if (!array_key_exists('encoding', $this->_data)) {
+        if (!isset($this->_data['encoding'])) {
             return 'UTF-8';
         }
         return $this->_data['encoding'];
@@ -373,7 +373,7 @@ class Zend_Feed_Writer_Entry
      */
     public function getAuthors()
     {
-        if (!array_key_exists('authors', $this->_data)) {
+        if (!isset($this->_data['authors'])) {
             return null;
         }
         return $this->_data['authors'];
@@ -386,7 +386,7 @@ class Zend_Feed_Writer_Entry
      */
     public function getContent()
     {
-        if (!array_key_exists('content', $this->_data)) {
+        if (!isset($this->_data['content'])) {
             return null;
         }
         return $this->_data['content'];
@@ -399,7 +399,7 @@ class Zend_Feed_Writer_Entry
      */
     public function getCopyright()
     {
-        if (!array_key_exists('copyright', $this->_data)) {
+        if (!isset($this->_data['copyright'])) {
             return null;
         }
         return $this->_data['copyright'];
@@ -412,7 +412,7 @@ class Zend_Feed_Writer_Entry
      */
     public function getDateCreated()
     {
-        if (!array_key_exists('dateCreated', $this->_data)) {
+        if (!isset($this->_data['dateCreated'])) {
             return null;
         }
         return $this->_data['dateCreated'];
@@ -425,7 +425,7 @@ class Zend_Feed_Writer_Entry
      */
     public function getDateModified()
     {
-        if (!array_key_exists('dateModified', $this->_data)) {
+        if (!isset($this->_data['dateModified'])) {
             return null;
         }
         return $this->_data['dateModified'];
@@ -438,7 +438,7 @@ class Zend_Feed_Writer_Entry
      */
     public function getDescription()
     {
-        if (!array_key_exists('description', $this->_data)) {
+        if (!isset($this->_data['description'])) {
             return null;
         }
         return $this->_data['description'];
@@ -451,7 +451,7 @@ class Zend_Feed_Writer_Entry
      */
     public function getId()
     {
-        if (!array_key_exists('id', $this->_data)) {
+        if (!isset($this->_data['id'])) {
             return null;
         }
         return $this->_data['id'];
@@ -464,7 +464,7 @@ class Zend_Feed_Writer_Entry
      */
     public function getLink()
     {
-        if (!array_key_exists('link', $this->_data)) {
+        if (!isset($this->_data['link'])) {
             return null;
         }
         return $this->_data['link'];
@@ -478,7 +478,7 @@ class Zend_Feed_Writer_Entry
      */
     public function getLinks()
     {
-        if (!array_key_exists('links', $this->_data)) {
+        if (!isset($this->_data['links'])) {
             return null;
         }
         return $this->_data['links'];
@@ -491,7 +491,7 @@ class Zend_Feed_Writer_Entry
      */
     public function getTitle()
     {
-        if (!array_key_exists('title', $this->_data)) {
+        if (!isset($this->_data['title'])) {
             return null;
         }
         return $this->_data['title'];
@@ -504,7 +504,7 @@ class Zend_Feed_Writer_Entry
      */
     public function getCommentCount()
     {
-        if (!array_key_exists('commentCount', $this->_data)) {
+        if (!isset($this->_data['commentCount'])) {
             return null;
         }
         return $this->_data['commentCount'];
@@ -517,7 +517,7 @@ class Zend_Feed_Writer_Entry
      */
     public function getCommentLink()
     {
-        if (!array_key_exists('commentLink', $this->_data)) {
+        if (!isset($this->_data['commentLink'])) {
             return null;
         }
         return $this->_data['commentLink'];
@@ -531,7 +531,7 @@ class Zend_Feed_Writer_Entry
      */
     public function getCommentFeedLinks()
     {
-        if (!array_key_exists('commentFeedLinks', $this->_data)) {
+        if (!isset($this->_data['commentFeedLinks'])) {
             return null;
         }
         return $this->_data['commentFeedLinks'];
@@ -585,7 +585,7 @@ class Zend_Feed_Writer_Entry
      */
     public function getCategories()
     {
-        if (!array_key_exists('categories', $this->_data)) {
+        if (!isset($this->_data['categories'])) {
             return null;
         }
         return $this->_data['categories'];
@@ -619,7 +619,7 @@ class Zend_Feed_Writer_Entry
      */
     public function getEnclosure()
     {
-        if (!array_key_exists('enclosure', $this->_data)) {
+        if (!isset($this->_data['enclosure'])) {
             return null;
         }
         return $this->_data['enclosure'];
@@ -655,7 +655,7 @@ class Zend_Feed_Writer_Entry
      */
     public function getExtension($name)
     {
-        if (array_key_exists($name . '_Entry', $this->_extensions)) {
+        if (isset($this->_extensions[$name . '_Entry'])) {
             return $this->_extensions[$name . '_Entry'];
         }
         return null;

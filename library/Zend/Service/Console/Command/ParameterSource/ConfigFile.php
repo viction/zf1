@@ -81,13 +81,13 @@ class Zend_Service_Console_Command_ParameterSource_ConfigFile
 
 		// Loop aliases
 		foreach ($parameter->aliases as $alias) {
-			if (array_key_exists($alias, $iniValues)) {
+			if (isset($iniValues[$alias])) {
 				$parameterValue = $iniValues[$alias]; break;
-			} else if (array_key_exists(strtolower($alias), $iniValues)) {
+			} else if (isset($iniValues[strtolower($alias)])) {
 				$parameterValue = $iniValues[strtolower($alias)]; break;
-			} else if (array_key_exists(str_replace('-', '', $alias), $iniValues)) {
+			} else if (isset($iniValues[str_replace('-', '', $alias)])) {
 				$parameterValue = $iniValues[str_replace('-', '', $alias)]; break;
-			} else if (array_key_exists(strtolower(str_replace('-', '', $alias)), $iniValues)) {
+			} else if (isset($iniValues[strtolower(str_replace('-', '', $alias))])) {
 				$parameterValue = $iniValues[strtolower(str_replace('-', '', $alias))]; break;
 			}
 		}

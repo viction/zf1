@@ -66,7 +66,7 @@ class Zend_Feed_Writer_Deleted
      */
     public function getEncoding()
     {
-        if (!array_key_exists('encoding', $this->_data)) {
+        if (!isset($this->_data['encoding'])) {
             return 'UTF-8';
         }
         return $this->_data['encoding'];
@@ -117,7 +117,7 @@ class Zend_Feed_Writer_Deleted
 
     public function getReference()
     {
-        if (!array_key_exists('reference', $this->_data)) {
+        if (!isset($this->_data['reference'])) {
             return null;
         }
         return $this->_data['reference'];
@@ -141,7 +141,7 @@ class Zend_Feed_Writer_Deleted
 
     public function getWhen()
     {
-        if (!array_key_exists('when', $this->_data)) {
+        if (!isset($this->_data['when'])) {
             return null;
         }
         return $this->_data['when'];
@@ -150,7 +150,7 @@ class Zend_Feed_Writer_Deleted
     public function setBy(array $by)
     {
         $author = array();
-        if (!array_key_exists('name', $by)
+        if (!isset($by['name'])
             || empty($by['name'])
             || !is_string($by['name'])
         ) {
@@ -180,7 +180,7 @@ class Zend_Feed_Writer_Deleted
 
     public function getBy()
     {
-        if (!array_key_exists('by', $this->_data)) {
+        if (!isset($this->_data['by'])) {
             return null;
         }
         return $this->_data['by'];
@@ -193,7 +193,7 @@ class Zend_Feed_Writer_Deleted
 
     public function getComment()
     {
-        if (!array_key_exists('comment', $this->_data)) {
+        if (!isset($this->_data['comment'])) {
             return null;
         }
         return $this->_data['comment'];

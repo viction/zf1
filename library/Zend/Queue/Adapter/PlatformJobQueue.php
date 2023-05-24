@@ -64,11 +64,11 @@ class Zend_Queue_Adapter_PlatformJobQueue extends Zend_Queue_Adapter_AdapterAbst
 
         $options = $this->_options['daemonOptions'];
 
-        if (!array_key_exists('host', $options)) {
+        if (!isset($options['host'])) {
             require_once 'Zend/Queue/Exception.php';
             throw new Zend_Queue_Exception('Platform Job Queue host should be provided');
         }
-        if (!array_key_exists('password', $options)) {
+        if (!isset($options['password'])) {
             require_once 'Zend/Queue/Exception.php';
             throw new Zend_Queue_Exception('Platform Job Queue password should be provided');
         }

@@ -83,7 +83,7 @@ class Zend_Gdata_Books_VolumeQuery extends Zend_Gdata_Query
      */
     public function getMinViewability()
     {
-        if (array_key_exists('min-viewability', $this->_params)) {
+        if (isset($this->_params['min-viewability'])) {
             return $this->_params['min-viewability'];
         } else {
             return null;

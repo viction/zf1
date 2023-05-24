@@ -96,7 +96,7 @@ class Zend_Server_Definition implements Countable, Iterator
             throw new Zend_Server_Exception('No method name provided');
         }
 
-        if (!$this->_overwriteExistingMethods && array_key_exists($name, $this->_methods)) {
+        if (!$this->_overwriteExistingMethods && isset($this->_methods[$name])) {
             require_once 'Zend/Server/Exception.php';
             throw new Zend_Server_Exception(sprintf('Method by name of "%s" already exists', $name));
         }
@@ -139,7 +139,7 @@ class Zend_Server_Definition implements Countable, Iterator
      */
     public function hasMethod($method)
     {
-        return array_key_exists($method, $this->_methods);
+        return isset($this->_methods[$method]);
     }
 
     /**

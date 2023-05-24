@@ -87,7 +87,7 @@ class Zend_Filter_Encrypt_Mcrypt implements Zend_Filter_Encrypt_Interface
             throw new Zend_Filter_Exception('Invalid options argument provided to filter');
         }
 
-        if (array_key_exists('compression', $options)) {
+        if (isset($options['compression'])) {
             $this->setCompression($options['compression']);
             unset($options['compress']);
         }

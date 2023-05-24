@@ -67,7 +67,7 @@ class Zend_Service_WindowsAzure_Storage_BlobContainer
      * @param string $value    Value to set
      */
     public function __set($name, $value) {
-        if (array_key_exists(strtolower($name), $this->_data)) {
+        if (isset($this->_data[strtolower($name)])) {
             $this->_data[strtolower($name)] = $value;
             return;
         }
@@ -81,7 +81,7 @@ class Zend_Service_WindowsAzure_Storage_BlobContainer
      * @param string $name     Name of the property
      */
     public function __get($name) {
-        if (array_key_exists(strtolower($name), $this->_data)) {
+        if (isset($this->_data[strtolower($name)])) {
             return $this->_data[strtolower($name)];
         }
 

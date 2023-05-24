@@ -50,7 +50,7 @@ class Zend_Dojo_View_Helper_SubmitButton extends Zend_Dojo_View_Helper_Button
      */
     public function submitButton($id, $value = null, array $params = array(), array $attribs = array())
     {
-        if (!array_key_exists('label', $params)) {
+        if (!isset($params['label'])) {
             $params['label'] = $value;
         }
         if (empty($params['label']) && !empty($params['content'])) {

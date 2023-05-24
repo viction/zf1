@@ -1,5 +1,25 @@
 ![Logo](http://framework.zend.com/images/logos/ZendFramework-logo.png)
 
+PHP 7 COMPATIBLE VERSION
+========================
+
+Local dev - use docker composer image to install vendors
+
+```
+docker run --rm --interactive --tty --volume $PWD:/app composer <command>
+```
+
+known deprecated methods or those with issues in PHP 7
+```php
+array_key_exists() // replace array_key_exists\s?\(\s?(.*)\s?,\s?(\$[a-zA-Z0-9_\-\>\[\]'"]+)\) -> isset($2[$1])
+each() // replace with foreach
+compact() // unknown at this time  - may be error result of previous errors
+// cookies characters?
+```
+
+ORIGINAL NOTES
+==============
+
 > ## End-of-Life occurred 28 Sep 2016
 >
 > This project is no longer maintained, and reached its end of life on 28 Sep
@@ -181,3 +201,4 @@ ACKNOWLEDGEMENTS
 The Zend Framework team would like to thank all the contributors to the Zend
 Framework project, our corporate sponsor, and you, the Zend Framework user.
 Please visit us sometime soon at http://framework.zend.com.
+

@@ -88,7 +88,7 @@ abstract class Zend_Dojo_Form_Decorator_DijitContainer extends Zend_Form_Decorat
     {
         if (null === $this->_attribs) {
             $attribs = $this->getElement()->getAttribs();
-            if (array_key_exists('dijitParams', $attribs)) {
+            if (isset($attribs['dijitParams'])) {
                 unset($attribs['dijitParams']);
             }
             $this->_attribs = $attribs;
@@ -105,21 +105,21 @@ abstract class Zend_Dojo_Form_Decorator_DijitContainer extends Zend_Form_Decorat
     {
         if (null === $this->_dijitParams) {
             $attribs = $this->getElement()->getAttribs();
-            if (array_key_exists('dijitParams', $attribs)) {
+            if (isset($attribs['dijitParams'])) {
                 $this->_dijitParams = $attribs['dijitParams'];
             } else {
                 $this->_dijitParams = array();
             }
 
             $options = $this->getOptions();
-            if (array_key_exists('dijitParams', $options)) {
+            if (isset($options['dijitParams'])) {
                 $this->_dijitParams = array_merge($this->_dijitParams, $options['dijitParams']);
                 $this->removeOption('dijitParams');
             }
         }
 
         // Ensure we have a title param
-        if (!array_key_exists('title', $this->_dijitParams)) {
+        if (!isset($this->_dijitParams['title'])) {
             $this->_dijitParams['title'] = $this->getTitle();
         }
 
@@ -177,8 +177,8 @@ abstract class Zend_Dojo_Form_Decorator_DijitContainer extends Zend_Form_Decorat
         $dijitParams = $this->getDijitParams();
         $attribs     = array_merge($this->getAttribs(), $this->getOptions());
 
-        if (array_key_exists('legend', $attribs)) {
-            if (!array_key_exists('title', $dijitParams) || empty($dijitParams['title'])) {
+        if (isset($attribs['legend'])) {
+            if (!isset($dijitParams['title']) || empty($dijitParams['title'])) {
                 $dijitParams['title'] = $attribs['legend'];
             }
             unset($attribs['legend']);

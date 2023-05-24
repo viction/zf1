@@ -244,7 +244,7 @@ class Zend_Controller_Router_Route_Module extends Zend_Controller_Router_Route_A
 
         $url = '';
 
-        if ($this->_moduleValid || array_key_exists($this->_moduleKey, $data)) {
+        if ($this->_moduleValid || isset($data[$this->_moduleKey])) {
             if ($params[$this->_moduleKey] != $this->_defaults[$this->_moduleKey]) {
                 $module = $params[$this->_moduleKey];
             }

@@ -47,7 +47,7 @@ class Zend_Controller_Response_HttpTestCase extends Zend_Controller_Response_Htt
         foreach ($this->_headers as $header) {
             $name = $header['name'];
             $key  = strtolower($name);
-            if (array_key_exists($name, $headers)) {
+            if (isset($headers[$name])) {
                 if ($header['replace']) {
                     $headers[$key] = $header['name'] . ': ' . $header['value'];
                 }

@@ -165,7 +165,7 @@ class Zend_Navigation_Page_Mvc extends Zend_Navigation_Page
             $reqParams = array();
             if ($request) {
                 $reqParams = $request->getParams();
-                if (!array_key_exists('module', $reqParams)) {
+                if (!isset($reqParams['module'])) {
                     $reqParams['module'] = $front->getDefaultModule();
                 }
             }
@@ -183,19 +183,19 @@ class Zend_Navigation_Page_Mvc extends Zend_Navigation_Page
 
             if (null !== $this->_module) {
                 $myParams['module'] = $this->_module;
-            } elseif (!array_key_exists('module', $myParams)) {
+            } elseif (!isset($myParams['module'])) {
                 $myParams['module'] = $front->getDefaultModule();
             }
 
             if (null !== $this->_controller) {
                 $myParams['controller'] = $this->_controller;
-            } elseif (!array_key_exists('controller', $myParams)) {
+            } elseif (!isset($myParams['controller'])) {
                 $myParams['controller'] = $front->getDefaultControllerName();
             }
 
             if (null !== $this->_action) {
                 $myParams['action'] = $this->_action;
-            } elseif (!array_key_exists('action', $myParams)) {
+            } elseif (!isset($myParams['action'])) {
                 $myParams['action'] = $front->getDefaultAction();
             }
 
@@ -461,7 +461,7 @@ class Zend_Navigation_Page_Mvc extends Zend_Navigation_Page
      */
     public function removeParam($name)
     {
-        if (array_key_exists($name, $this->_params)) {
+        if (isset($this->_params[$name])) {
             unset($this->_params[$name]);
 
             $this->_hrefCache = null;
@@ -510,7 +510,7 @@ class Zend_Navigation_Page_Mvc extends Zend_Navigation_Page
     {
         $name = (string) $name;
 
-        if (!array_key_exists($name, $this->_params)) {
+        if (!isset($this->_params[$name])) {
             return null;
         }
 

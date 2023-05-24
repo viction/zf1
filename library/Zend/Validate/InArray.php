@@ -84,7 +84,7 @@ class Zend_Validate_InArray extends Zend_Validate_Abstract
                 $options = $temp;
             } else {
                 $temp = func_get_arg(0);
-                if (!array_key_exists('haystack', $options)) {
+                if (!isset($options['haystack'])) {
                     $options = array();
                     $options['haystack'] = $temp;
                 } else {
@@ -94,11 +94,11 @@ class Zend_Validate_InArray extends Zend_Validate_Abstract
         }
 
         $this->setHaystack($options['haystack']);
-        if (array_key_exists('strict', $options)) {
+        if (isset($options['strict'])) {
             $this->setStrict($options['strict']);
         }
 
-        if (array_key_exists('recursive', $options)) {
+        if (isset($options['recursive'])) {
             $this->setRecursive($options['recursive']);
         }
     }

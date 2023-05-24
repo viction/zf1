@@ -274,7 +274,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
      */
     public function setOption($key, $value)
     {
-      if (!array_key_exists($key,$this->_options)) {
+      if (!isset($this->_options[$key])) {
         throw new Zend_Wildfire_Exception('Option with name "'.$key.'" does not exist!');
       }
       $previous = $this->_options[$key];
@@ -290,7 +290,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
      */
     public function getOption($key)
     {
-      if (!array_key_exists($key,$this->_options)) {
+      if (!isset($this->_options[$key])) {
         throw new Zend_Wildfire_Exception('Option with name "'.$key.'" does not exist!');
       }
       return $this->_options[$key];
@@ -563,7 +563,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
                     require_once 'Zend/Wildfire/Exception.php';
                     throw new Zend_Wildfire_Exception('You must supply a key.');
                 }
-                if (!array_key_exists('data',$data)) {
+                if (!isset($data['data'])) {
                     require_once 'Zend/Wildfire/Exception.php';
                     throw new Zend_Wildfire_Exception('You must supply data.');
                 }
@@ -582,12 +582,12 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
 
                 if (!isset($data['meta']) ||
                     !is_array($data['meta']) ||
-                    !array_key_exists('Type',$data['meta'])) {
+                    !isset($data['meta']['Type'])) {
 
                     require_once 'Zend/Wildfire/Exception.php';
                     throw new Zend_Wildfire_Exception('You must supply a "Type" in the meta information.');
                 }
-                if (!array_key_exists('data',$data)) {
+                if (!isset($data['data'])) {
                     require_once 'Zend/Wildfire/Exception.php';
                     throw new Zend_Wildfire_Exception('You must supply data.');
                 }
@@ -715,7 +715,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
                       && is_array($this->_objectFilters[$class])
                       && in_array($just_name,$this->_objectFilters[$class]))) {
 
-                    if (array_key_exists($raw_name,$members)
+                    if (isset($members[$raw_name])
                         && !$property->isStatic()) {
 
                         $return[$name] = $this->_encodeObject($members[$raw_name], $objectDepth + 1, 1);
@@ -776,7 +776,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
               // with to stop infinite recursion in this case.
               if ($key=='GLOBALS'
                   && is_array($val)
-                  && array_key_exists('GLOBALS',$val)) {
+                  && isset($val['GLOBALS'])) {
 
                   $val['GLOBALS'] = '** Recursion (GLOBALS) **';
               }

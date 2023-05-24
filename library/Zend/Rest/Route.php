@@ -264,7 +264,7 @@ class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
 
         $url = '';
 
-        if ($this->_moduleValid || array_key_exists($this->_moduleKey, $data)) {
+        if ($this->_moduleValid || isset($data[$this->_moduleKey])) {
             if ($params[$this->_moduleKey] != $this->_defaults[$this->_moduleKey]) {
                 $module = $params[$this->_moduleKey];
             }
@@ -356,7 +356,7 @@ class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
         if ($this->_fullRestfulModule($moduleName)) {
             return true;
         }
-        if ($this->_restfulControllers && array_key_exists($moduleName, $this->_restfulControllers)) {
+        if ($this->_restfulControllers && isset($this->_restfulControllers[$moduleName])) {
             return true;
         }
         return false;

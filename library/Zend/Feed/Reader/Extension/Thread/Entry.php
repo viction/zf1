@@ -64,7 +64,7 @@ class Zend_Feed_Reader_Extension_Thread_Entry
      */
     protected function _getData($name)
     {
-        if (array_key_exists($name, $this->_data)) {
+        if (isset($this->_data[$name])) {
             return $this->_data[$name];
         }
 

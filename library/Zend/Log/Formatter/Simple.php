@@ -75,7 +75,7 @@ class Zend_Log_Formatter_Simple extends Zend_Log_Formatter_Abstract
                 $options = $options->toArray();
             }
 
-            if (array_key_exists('format', $options)) {
+            if (isset($options['format'])) {
                 $format = $options['format'];
             }
         }

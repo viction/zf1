@@ -57,7 +57,7 @@ class Zend_Service_Rackspace_Files_Container
                 self::ERROR_PARAM_ARRAY_CONSTRUCT
             );
         }
-        if (!array_key_exists('name', $data)) {
+        if (!isset($data['name'])) {
             require_once 'Zend/Service/Rackspace/Files/Exception.php';
             throw new Zend_Service_Rackspace_Files_Exception(
                 self::ERROR_PARAM_NO_NAME

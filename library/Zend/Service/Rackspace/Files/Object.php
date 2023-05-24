@@ -105,32 +105,32 @@ class Zend_Service_Rackspace_Files_Object
                 'You must pass a RackspaceFiles and an array'
             );
         }
-        if (!array_key_exists('container', $data)) {
+        if (!isset($data['container'])) {
             require_once 'Zend/Service/Rackspace/Files/Exception.php';
             throw new Zend_Service_Rackspace_Files_Exception(
                 'You must pass the container of the object in the array (container)'
             );
         }
-        if (array_key_exists('name', $data)) {
-            if (!array_key_exists('hash', $data)) {
+        if (isset($data['name'])) {
+            if (!isset($data['hash'])) {
                 require_once 'Zend/Service/Rackspace/Files/Exception.php';
                 throw new Zend_Service_Rackspace_Files_Exception(
                     'You must pass the hash of the object in the array (hash)'
                 );
             }
-            if (!array_key_exists('bytes', $data)) {
+            if (!isset($data['bytes'])) {
                 require_once 'Zend/Service/Rackspace/Files/Exception.php';
                 throw new Zend_Service_Rackspace_Files_Exception(
                     'You must pass the byte size of the object in the array (bytes)'
                 );
             }
-            if (!array_key_exists('content_type', $data)) {
+            if (!isset($data['content_type'])) {
                 require_once 'Zend/Service/Rackspace/Files/Exception.php';
                 throw new Zend_Service_Rackspace_Files_Exception(
                     'You must pass the content type of the object in the array (content_type)'
                 );
             }
-            if (!array_key_exists('last_modified', $data)) {
+            if (!isset($data['last_modified'])) {
                 require_once 'Zend/Service/Rackspace/Files/Exception.php';
                 throw new Zend_Service_Rackspace_Files_Exception(
                     'You must pass the last modified data of the object in the array (last_modified)'
@@ -146,7 +146,7 @@ class Zend_Service_Rackspace_Files_Object
             if (!empty($data['content'])) {
                 $this->content = $data['content'];
             }
-        } elseif (array_key_exists('subdir', $data)) {
+        } elseif (isset($data['subdir'])) {
             $this->name = $data['subdir'];
         } else {
             require_once 'Zend/Service/Rackspace/Files/Exception.php';

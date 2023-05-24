@@ -822,7 +822,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
     {
         $id = (int)$this->_readline();
 
-        if (!array_key_exists($id, $this->_memo)) {
+        if (!isset($this->_memo[$id])) {
             require_once 'Zend/Serializer/Exception.php';
             throw new Zend_Serializer_Exception('Get id "' . $id . '" not found in momo');
         }
@@ -839,7 +839,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
     {
         $id = ord($this->_read(1));
 
-        if (!array_key_exists($id, $this->_memo)) {
+        if (!isset($this->_memo[$id])) {
             require_once 'Zend/Serializer/Exception.php';
             throw new Zend_Serializer_Exception('Get id "' . $id . '" not found in momo');
         }
@@ -860,7 +860,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
         }
         list(, $id) = unpack('l', $bin);
 
-        if (!array_key_exists($id, $this->_memo)) {
+        if (!isset($this->_memo[$id])) {
             require_once 'Zend/Serializer/Exception.php';
             throw new Zend_Serializer_Exception('Get id "' . $id . '" not found in momo');
         }

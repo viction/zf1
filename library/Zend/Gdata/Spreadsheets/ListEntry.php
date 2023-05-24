@@ -119,7 +119,7 @@ class Zend_Gdata_Spreadsheets_ListEntry extends Zend_Gdata_Entry
         if ($name === null) {
             return $this->_customByName;
         } else {
-            if (array_key_exists($name, $this->customByName)) {
+            if (isset($this->customByName[$name])) {
                 return $this->_customByName[$name];
             } else {
                 return null;
@@ -165,7 +165,7 @@ class Zend_Gdata_Spreadsheets_ListEntry extends Zend_Gdata_Entry
      */
     public function removeCustom($index)
     {
-        if (array_key_exists($index, $this->_custom)) {
+        if (isset($this->_custom[$index])) {
             $element = $this->_custom[$index];
             // Remove element
             unset($this->_custom[$index]);
@@ -190,7 +190,7 @@ class Zend_Gdata_Spreadsheets_ListEntry extends Zend_Gdata_Entry
      */
     public function removeCustomByName($name)
     {
-        if (array_key_exists($name, $this->_customByName)) {
+        if (isset($this->_customByName[$name])) {
             $element = $this->_customByName[$name];
             // Remove element
             unset($this->_customByName[$name]);

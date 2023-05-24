@@ -146,7 +146,7 @@ abstract class Zend_Translate_Adapter {
             $options = array('content' => $options);
         }
 
-        if (array_key_exists('cache', $options)) {
+        if (isset($options['cache'])) {
             self::setCache($options['cache']);
             unset($options['cache']);
         }
@@ -225,7 +225,7 @@ abstract class Zend_Translate_Adapter {
             $originate = (string) $options['locale'];
         }
 
-        if ((array_key_exists('log', $options)) && !($options['log'] instanceof Zend_Log)) {
+        if ((isset($options['log'])) && !($options['log'] instanceof Zend_Log)) {
             require_once 'Zend/Translate/Exception.php';
             throw new Zend_Translate_Exception('Instance of Zend_Log expected for option log');
         }
@@ -659,7 +659,7 @@ abstract class Zend_Translate_Adapter {
                 $this->_translate[$key] = array();
             }
 
-            if (array_key_exists($key, $temp) && is_array($temp[$key])) {
+            if (isset($temp[$key]) && is_array($temp[$key])) {
                 $this->_translate[$key] = $temp[$key] + $this->_translate[$key];
             }
         }
@@ -728,8 +728,8 @@ abstract class Zend_Translate_Adapter {
                 $this->_log($messageId, $locale);
                 // use rerouting when enabled
                 if (!empty($this->_options['route'])) {
-                    if (array_key_exists($locale, $this->_options['route']) &&
-                        !array_key_exists($locale, $this->_routed)) {
+                    if (isset($this->_options['route'][$locale]) &&
+                        !isset($this->_routed[$locale])) {
                         $this->_routed[$locale] = true;
                         return $this->translate($messageId, $this->_options['route'][$locale]);
                     }
@@ -786,8 +786,8 @@ abstract class Zend_Translate_Adapter {
         $this->_log($messageId, $locale);
         // use rerouting when enabled
         if (!empty($this->_options['route'])) {
-            if (array_key_exists($locale, $this->_options['route']) &&
-                !array_key_exists($locale, $this->_routed)) {
+            if (isset($this->_options['route'][$locale]) &&
+                !isset($this->_routed[$locale])) {
                 $this->_routed[$locale] = true;
                 return $this->translate($messageId, $this->_options['route'][$locale]);
             }

@@ -131,7 +131,7 @@ abstract class Zend_Application_Bootstrap_BootstrapAbstract
             $methods[$key] = strtolower($method);
         }
 
-        if (array_key_exists('pluginpaths', $options)) {
+        if (isset($options['pluginpaths'])) {
             $pluginLoader = $this->getPluginLoader();
 
             foreach ($options['pluginpaths'] as $prefix => $path) {
@@ -203,7 +203,7 @@ abstract class Zend_Application_Bootstrap_BootstrapAbstract
         if (is_array($array2)) {
             foreach ($array2 as $key => $val) {
                 if (is_array($array2[$key])) {
-                    $array1[$key] = (array_key_exists($key, $array1) && is_array($array1[$key]))
+                    $array1[$key] = (isset($array1[$key]) && is_array($array1[$key]))
                                   ? $this->mergeOptions($array1[$key], $array2[$key])
                                   : $array2[$key];
                 } else {
@@ -305,7 +305,7 @@ abstract class Zend_Application_Bootstrap_BootstrapAbstract
         }
 
         $resource = strtolower($resource);
-        if (array_key_exists($resource, $this->_pluginResources)) {
+        if (isset($this->_pluginResources[$resource])) {
             unset($this->_pluginResources[$resource]);
         }
 
@@ -332,7 +332,7 @@ abstract class Zend_Application_Bootstrap_BootstrapAbstract
      */
     public function getPluginResource($resource)
     {
-        if (array_key_exists(strtolower($resource), $this->_pluginResources)) {
+        if (isset($this->_pluginResources[strtolower($resource)])) {
             $resource = strtolower($resource);
             if (!$this->_pluginResources[$resource] instanceof Zend_Application_Resource_Resource) {
                 $resourceName = $this->_loadPluginResource($resource, $this->_pluginResources[$resource]);
@@ -675,7 +675,7 @@ abstract class Zend_Application_Bootstrap_BootstrapAbstract
         }
 
         $classResources = $this->getClassResources();
-        if (array_key_exists($resourceName, $classResources)) {
+        if (isset($classResources[$resourceName])) {
             $this->_started[$resourceName] = true;
             $method = $classResources[$resourceName];
             $return = $this->$method();

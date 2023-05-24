@@ -77,7 +77,7 @@ class Zend_Form_Element_Captcha extends Zend_Form_Element_Xhtml
             $instance = $captcha;
         } else {
             if (is_array($captcha)) {
-                if (array_key_exists('captcha', $captcha)) {
+                if (isset($captcha['captcha'])) {
                     $name = $captcha['captcha'];
                     unset($captcha['captcha']);
                 } else {
@@ -139,9 +139,9 @@ class Zend_Form_Element_Captcha extends Zend_Form_Element_Xhtml
         $captcha        = null;
         $captchaOptions = array();
 
-        if (array_key_exists('captcha', $options)) {
+        if (isset($options['captcha'])) {
             $captcha = $options['captcha'];
-            if (array_key_exists('captchaOptions', $options)) {
+            if (isset($options['captchaOptions'])) {
                 $captchaOptions = $options['captchaOptions'];
                 unset($options['captchaOptions']);
             }
@@ -171,14 +171,14 @@ class Zend_Form_Element_Captcha extends Zend_Form_Element_Xhtml
             $decorator  = $captcha->getDecorator();
             $key        = get_class($this->_getDecorator($decorator, null));
 
-            if (!empty($decorator) && !array_key_exists($key, $decorators)) {
+            if (!empty($decorator) && !isset($decorators[$key])) {
                 array_unshift($decorators, $decorator);
             }
 
             $decorator = array('Captcha', array('captcha' => $captcha));
             $key       = get_class($this->_getDecorator($decorator[0], $decorator[1]));
 
-            if ($captcha instanceof Zend_Captcha_Word && !array_key_exists($key, $decorators)) {
+            if ($captcha instanceof Zend_Captcha_Word && !isset($decorators[$key])) {
                 array_unshift($decorators, $decorator);
             }
 
@@ -292,7 +292,7 @@ class Zend_Form_Element_Captcha extends Zend_Form_Element_Xhtml
         array_pop($segments);
         $newContext = $context;
         foreach ($segments as $segment) {
-            if (array_key_exists($segment, $newContext)) {
+            if (isset($newContext[$segment])) {
                 $newContext = $newContext[$segment];
             }
         }

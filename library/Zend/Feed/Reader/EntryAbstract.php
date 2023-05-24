@@ -192,7 +192,7 @@ abstract class Zend_Feed_Reader_EntryAbstract
      */
     public function getExtension($name)
     {
-        if (array_key_exists($name . '_Entry', $this->_extensions)) {
+        if (isset($this->_extensions[$name . '_Entry'])) {
             return $this->_extensions[$name . '_Entry'];
         }
         return null;

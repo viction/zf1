@@ -58,7 +58,7 @@ class Zend_Filter_StringTrim implements Zend_Filter_Interface
             $options          = $temp;
         }
 
-        if (array_key_exists('charlist', $options)) {
+        if (isset($options['charlist'])) {
             $this->setCharList($options['charlist']);
         }
     }

@@ -193,13 +193,13 @@ abstract class Zend_Db_Adapter_Abstract
         /*
          * normalize the config and merge it with the defaults
          */
-        if (array_key_exists('options', $config)) {
+        if (isset($config['options'])) {
             // can't use array_merge() because keys might be integers
             foreach ((array) $config['options'] as $key => $value) {
                 $options[$key] = $value;
             }
         }
-        if (array_key_exists('driver_options', $config)) {
+        if (isset($config['driver_options'])) {
             if (!empty($config['driver_options'])) {
                 // can't use array_merge() because keys might be integers
                 foreach ((array) $config['driver_options'] as $key => $value) {
@@ -222,7 +222,7 @@ abstract class Zend_Db_Adapter_Abstract
 
 
         // obtain the case setting, if there is one
-        if (array_key_exists(Zend_Db::CASE_FOLDING, $options)) {
+        if (isset($options[Zend_Db::CASE_FOLDING])) {
             $case = (int) $options[Zend_Db::CASE_FOLDING];
             switch ($case) {
                 case Zend_Db::CASE_LOWER:
@@ -238,7 +238,7 @@ abstract class Zend_Db_Adapter_Abstract
             }
         }
 
-        if (array_key_exists(Zend_Db::FETCH_MODE, $options)) {
+        if (isset($options[Zend_Db::FETCH_MODE])) {
             if (is_string($options[Zend_Db::FETCH_MODE])) {
                 $constant = 'Zend_Db::FETCH_' . strtoupper($options[Zend_Db::FETCH_MODE]);
                 if(defined($constant)) {
@@ -249,23 +249,23 @@ abstract class Zend_Db_Adapter_Abstract
         }
 
         // obtain quoting property if there is one
-        if (array_key_exists(Zend_Db::AUTO_QUOTE_IDENTIFIERS, $options)) {
+        if (isset($options[Zend_Db::AUTO_QUOTE_IDENTIFIERS])) {
             $this->_autoQuoteIdentifiers = (bool) $options[Zend_Db::AUTO_QUOTE_IDENTIFIERS];
         }
 
         // obtain allow serialization property if there is one
-        if (array_key_exists(Zend_Db::ALLOW_SERIALIZATION, $options)) {
+        if (isset($options[Zend_Db::ALLOW_SERIALIZATION])) {
             $this->_allowSerialization = (bool) $options[Zend_Db::ALLOW_SERIALIZATION];
         }
 
         // obtain auto reconnect on unserialize property if there is one
-        if (array_key_exists(Zend_Db::AUTO_RECONNECT_ON_UNSERIALIZE, $options)) {
+        if (isset($options[Zend_Db::AUTO_RECONNECT_ON_UNSERIALIZE])) {
             $this->_autoReconnectOnUnserialize = (bool) $options[Zend_Db::AUTO_RECONNECT_ON_UNSERIALIZE];
         }
 
         // create a profiler object
         $profiler = false;
-        if (array_key_exists(Zend_Db::PROFILER, $this->_config)) {
+        if (isset($this->_config[Zend_Db::PROFILER])) {
             $profiler = $this->_config[Zend_Db::PROFILER];
             unset($this->_config[Zend_Db::PROFILER]);
         }
@@ -282,13 +282,13 @@ abstract class Zend_Db_Adapter_Abstract
     protected function _checkRequiredOptions(array $config)
     {
         // we need at least a dbname
-        if (! array_key_exists('dbname', $config)) {
+        if (! isset($config['dbname'])) {
             /** @see Zend_Db_Adapter_Exception */
             require_once 'Zend/Db/Adapter/Exception.php';
             throw new Zend_Db_Adapter_Exception("Configuration array must have a key for 'dbname' that names the database instance");
         }
 
-        if (! array_key_exists('password', $config)) {
+        if (! isset($config['password'])) {
             /**
              * @see Zend_Db_Adapter_Exception
              */
@@ -296,7 +296,7 @@ abstract class Zend_Db_Adapter_Abstract
             throw new Zend_Db_Adapter_Exception("Configuration array must have a key for 'password' for login credentials");
         }
 
-        if (! array_key_exists('username', $config)) {
+        if (! isset($config['username'])) {
             /**
              * @see Zend_Db_Adapter_Exception
              */
@@ -875,7 +875,7 @@ abstract class Zend_Db_Adapter_Abstract
             return implode(', ', $value);
         }
 
-        if ($type !== null && array_key_exists($type = strtoupper($type), $this->_numericDataTypes)) {
+        if ($type !== null && isset($this->_numericDataTypes[$type = strtoupper($type)])) {
             $quotedValue = '0';
             switch ($this->_numericDataTypes[$type]) {
                 case Zend_Db::INT_TYPE: // 32-bit integer

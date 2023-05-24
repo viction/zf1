@@ -310,8 +310,8 @@ class Zend_Barcode_Object_Code128 extends Zend_Barcode_Object_ObjectAbstract
                 }
                 $result[] = $code;
                 $currentCharset = 'B';
-            } else if (array_key_exists($char, $this->_charSets['A']) && $currentCharset != 'A'
-                  && !(array_key_exists($char, $this->_charSets['B']) && $currentCharset == 'B')) {
+            } else if (isset($this->_charSets['A'][$char]) && $currentCharset != 'A'
+                  && !(isset($this->_charSets['B'][$char]) && $currentCharset == 'B')) {
                 /**
                  * Switch to C as C contains the char and C is not the current charset.
                  */

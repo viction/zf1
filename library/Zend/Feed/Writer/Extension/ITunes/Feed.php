@@ -353,7 +353,7 @@ class Zend_Feed_Writer_Extension_ITunes_Feed
                 'invalid method: ' . $method
             );
         }
-        if (!array_key_exists($point, $this->_data) || empty($this->_data[$point])) {
+        if (!isset($this->_data[$point]) || empty($this->_data[$point])) {
             return null;
         }
         return $this->_data[$point];

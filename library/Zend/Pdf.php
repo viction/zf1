@@ -482,7 +482,7 @@ class Zend_Pdf
                 $this->_loadPages($child, $attributes);
             } else if ($child->Type->value == 'Page') {
                 foreach (self::$_inheritableAttributes as $property) {
-                    if ($child->$property === null && array_key_exists($property, $attributes)) {
+                    if ($child->$property === null && isset($attributes[$property])) {
                         /**
                          * Important note.
                          * If any attribute or dependant object is an indirect object, then it's still

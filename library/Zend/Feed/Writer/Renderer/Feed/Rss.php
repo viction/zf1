@@ -230,10 +230,10 @@ class Zend_Feed_Writer_Renderer_Feed_Rss
         $generator = $dom->createElement('generator');
         $root->appendChild($generator);
         $name = $gdata['name'];
-        if (array_key_exists('version', $gdata)) {
+        if (isset($gdata['version'])) {
             $name .= ' ' . $gdata['version'];
         }
-        if (array_key_exists('uri', $gdata)) {
+        if (isset($gdata['uri'])) {
             $name .= ' (' . $gdata['uri'] . ')';
         }
         $text = $dom->createTextNode($name);
@@ -287,7 +287,7 @@ class Zend_Feed_Writer_Renderer_Feed_Rss
         foreach ($authors as $data) {
             $author = $this->_dom->createElement('author');
             $name = $data['name'];
-            if (array_key_exists('email', $data)) {
+            if (isset($data['email'])) {
                 $name = $data['email'] . ' (' . $data['name'] . ')';
             }
             $text = $dom->createTextNode($name);

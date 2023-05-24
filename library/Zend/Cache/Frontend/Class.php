@@ -221,8 +221,8 @@ class Zend_Cache_Frontend_Class extends Zend_Cache_Core
         }
 
         $id = $this->makeId($name, $parameters);
-        if (($rs = $this->load($id)) && (array_key_exists(0, $rs))
-            && (array_key_exists(1, $rs))
+        if (($rs = $this->load($id)) && (isset($rs[0]))
+            && (isset($rs[1]))
         ) {
             // A cache is available
             $output = $rs[0];

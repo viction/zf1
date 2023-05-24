@@ -174,12 +174,12 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
      */
     public function setOptions(array $options = array())
     {
-        if (array_key_exists('messages', $options)) {
+        if (isset($options['messages'])) {
             $this->setMessages($options['messages']);
         }
 
-        if (array_key_exists('hostname', $options)) {
-            if (array_key_exists('allow', $options)) {
+        if (isset($options['hostname'])) {
+            if (isset($options['allow'])) {
                 $this->setHostnameValidator($options['hostname'], $options['allow']);
             } else {
                 $this->setHostnameValidator($options['hostname']);
@@ -188,15 +188,15 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
             $this->setHostnameValidator();
         }
 
-        if (array_key_exists('mx', $options)) {
+        if (isset($options['mx'])) {
             $this->setValidateMx($options['mx']);
         }
 
-        if (array_key_exists('deep', $options)) {
+        if (isset($options['deep'])) {
             $this->setDeepMxCheck($options['deep']);
         }
 
-        if (array_key_exists('domain', $options)) {
+        if (isset($options['domain'])) {
             $this->setDomainCheck($options['domain']);
         }
 
@@ -355,7 +355,7 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
         $octet = explode('.',$host);
         if ((int)$octet[0] >= 224) {
             return true;
-        } else if (array_key_exists($octet[0], $this->_invalidIp)) {
+        } else if (isset($this->_invalidIp[$octet[0]])) {
             foreach ((array)$this->_invalidIp[$octet[0]] as $subnetData) {
                 // we skip the first loop as we already know that octet matches
                 for ($i = 1; $i < 4; $i++) {

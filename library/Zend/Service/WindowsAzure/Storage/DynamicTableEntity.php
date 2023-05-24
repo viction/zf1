@@ -77,7 +77,7 @@ class Zend_Service_WindowsAzure_Storage_DynamicTableEntity extends Zend_Service_
         } else if (strtolower($name) == 'etag') {
             $this->setEtag($value);
         } else {
-            if (!array_key_exists(strtolower($name), $this->_dynamicProperties)) {
+            if (!isset($this->_dynamicProperties[strtolower($name)])) {
                 // Determine type?
                 if (is_null($type)) {
                     $type = 'Edm.String';
@@ -138,7 +138,7 @@ class Zend_Service_WindowsAzure_Storage_DynamicTableEntity extends Zend_Service_
      */
     public function setAzurePropertyType($name, $type = 'Edm.String')
     {
-        if (!array_key_exists(strtolower($name), $this->_dynamicProperties)) {
+        if (!isset($this->_dynamicProperties[strtolower($name)])) {
             $this->setAzureProperty($name, '', $type);            
         } else {
             $this->_dynamicProperties[strtolower($name)]->Type = $type;   
@@ -166,7 +166,7 @@ class Zend_Service_WindowsAzure_Storage_DynamicTableEntity extends Zend_Service_
             return $this->getEtag();
         }
 
-        if (!array_key_exists(strtolower($name), $this->_dynamicProperties)) {
+        if (!isset($this->_dynamicProperties[strtolower($name)])) {
             $this->setAzureProperty($name);            
         }
 
@@ -181,7 +181,7 @@ class Zend_Service_WindowsAzure_Storage_DynamicTableEntity extends Zend_Service_
      */
     public function getAzurePropertyType($name)
     {
-        if (!array_key_exists(strtolower($name), $this->_dynamicProperties)) {
+        if (!isset($this->_dynamicProperties[strtolower($name)])) {
             $this->setAzureProperty($name, '', $type);            
         }
         

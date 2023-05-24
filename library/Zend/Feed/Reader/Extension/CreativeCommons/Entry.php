@@ -61,7 +61,7 @@ class Zend_Feed_Reader_Extension_CreativeCommons_Entry extends Zend_Feed_Reader_
     public function getLicenses()
     {
         $name = 'licenses';
-        if (array_key_exists($name, $this->_data)) {
+        if (isset($this->_data[$name])) {
             return $this->_data[$name];
         }
 

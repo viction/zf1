@@ -100,11 +100,11 @@ class Zend_Validate_File_IsCompressed extends Zend_Validate_File_MimeType
 
         if (is_array($mimetype)) {
             $temp = $mimetype;
-            if (array_key_exists('magicfile', $temp)) {
+            if (isset($temp['magicfile'])) {
                 unset($temp['magicfile']);
             }
 
-            if (array_key_exists('headerCheck', $temp)) {
+            if (isset($temp['headerCheck'])) {
                 unset($temp['headerCheck']);
             }
 

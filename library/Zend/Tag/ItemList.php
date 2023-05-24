@@ -190,7 +190,7 @@ class Zend_Tag_ItemList implements Countable, SeekableIterator, ArrayAccess
      * @return boolean
      */
     public function offsetExists($offset) {
-        return array_key_exists($offset, $this->_items);
+        return isset($this->_items[$offset]);
     }
 
     /**

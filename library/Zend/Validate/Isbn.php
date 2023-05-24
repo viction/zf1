@@ -83,12 +83,12 @@ class Zend_Validate_Isbn extends Zend_Validate_Abstract
         }
 
         // set type
-        if (array_key_exists('type', $options)) {
+        if (isset($options['type'])) {
             $this->setType($options['type']);
         }
 
         // set separator
-        if (array_key_exists('separator', $options)) {
+        if (isset($options['separator'])) {
             $this->setSeparator($options['separator']);
         }
     }

@@ -539,7 +539,7 @@ abstract class Zend_Db_Table_Abstract
     public function setDefaultValues(Array $defaultValues)
     {
         foreach ($defaultValues as $defaultName => $defaultValue) {
-            if (array_key_exists($defaultName, $this->_metadata)) {
+            if (isset($this->_metadata[$defaultName])) {
                 $this->_defaultValues[$defaultName] = $defaultValue;
             }
         }
@@ -999,7 +999,7 @@ abstract class Zend_Db_Table_Abstract
             return $info;
         }
 
-        if (!array_key_exists($key, $info)) {
+        if (!isset($info[$key])) {
             require_once 'Zend/Db/Table/Exception.php';
             throw new Zend_Db_Table_Exception('There is no table information for the key "' . $key . '"');
         }
@@ -1050,7 +1050,7 @@ abstract class Zend_Db_Table_Abstract
          * position of the data.  The following values are considered empty:
          *   null, false, true, '', array()
          */
-        if (array_key_exists($pkIdentity, $data)) {
+        if (isset($data[$pkIdentity])) {
             if ($data[$pkIdentity] === null                                        // null
                 || $data[$pkIdentity] === ''                                       // empty string
                 || is_bool($data[$pkIdentity])                                     // boolean
@@ -1154,7 +1154,7 @@ abstract class Zend_Db_Table_Abstract
                         for ($i = 0; $i < count($map[self::COLUMNS]); ++$i) {
                             $col = $this->_db->foldCase($map[self::COLUMNS][$i]);
                             $refCol = $this->_db->foldCase($map[self::REF_COLUMNS][$i]);
-                            if (array_key_exists($refCol, $newPrimaryKey)) {
+                            if (isset($newPrimaryKey[$refCol])) {
                                 $newRefs[$col] = $newPrimaryKey[$refCol];
                             }
                             $type = $this->_metadata[$col]['DATA_TYPE'];
@@ -1304,13 +1304,13 @@ abstract class Zend_Db_Table_Abstract
         $whereList = array();
         $numberTerms = 0;
         foreach ($args as $keyPosition => $keyValues) {
-            $keyValuesCount = count($keyValues);
             // Coerce the values to an array.
             // Don't simply typecast to array, because the values
             // might be Zend_Db_Expr objects.
             if (!is_array($keyValues)) {
                 $keyValues = array($keyValues);
             }
+            $keyValuesCount = count($keyValues);
             if ($numberTerms == 0) {
                 $numberTerms = $keyValuesCount;
             } else if ($keyValuesCount != $numberTerms) {
@@ -1499,7 +1499,7 @@ abstract class Zend_Db_Table_Abstract
             }
         } elseif ($defaultSource == self::DEFAULT_CLASS && $this->_defaultValues) {
             foreach ($this->_defaultValues as $defaultName => $defaultValue) {
-                if (array_key_exists($defaultName, $defaults)) {
+                if (isset($defaults[$defaultName])) {
                     $defaults[$defaultName] = $defaultValue;
                 }
             }

@@ -151,7 +151,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
         $this->_checkRequiredOptions($this->_config);
 
         // check if using full connection string
-        if (array_key_exists('host', $this->_config)) {
+        if (isset($this->_config['host'])) {
             $dsn = ';DATABASE=' . $this->_config['dbname']
             . ';HOSTNAME=' . $this->_config['host']
             . ';PORT='     . $this->_config['port']
@@ -175,8 +175,8 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
     {
         parent::_checkRequiredOptions($config);
 
-        if (array_key_exists('host', $this->_config) &&
-        !array_key_exists('port', $config)) {
+        if (isset($this->_config['host']) &&
+        !isset($config['port'])) {
             /** @see Zend_Db_Adapter_Exception */
             require_once 'Zend/Db/Adapter/Exception.php';
             throw new Zend_Db_Adapter_Exception("Configuration must have a key for 'port' when 'host' is specified");

@@ -2102,7 +2102,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
         $origName = $filter['filter'];
         $name     = $this->getPluginLoader(self::FILTER)->load($filter['filter']);
 
-        if (array_key_exists($name, $this->_filters)) {
+        if (isset($this->_filters[$name])) {
             require_once 'Zend/Form/Exception.php';
             throw new Zend_Form_Exception(sprintf('Filter instance already exists for filter "%s"', $origName));
         }
@@ -2151,7 +2151,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
         $origName = $validator['validator'];
         $name     = $this->getPluginLoader(self::VALIDATE)->load($validator['validator']);
 
-        if (array_key_exists($name, $this->_validators)) {
+        if (isset($this->_validators[$name])) {
             require_once 'Zend/Form/Exception.php';
             throw new Zend_Form_Exception(sprintf('Validator instance already exists for validator "%s"', $origName));
         }

@@ -59,7 +59,7 @@ class Zend_Db_Statement_Pdo_Oci extends Zend_Db_Statement_Pdo
         $remove = $this->_adapter->foldCase('zend_db_rownum');
 
         foreach ($data as $row) {
-            if (is_array($row) && array_key_exists($remove, $row)) {
+            if (is_array($row) && isset($row[$remove])) {
                 unset($row[$remove]);
             }
             $results[] = $row;
@@ -82,7 +82,7 @@ class Zend_Db_Statement_Pdo_Oci extends Zend_Db_Statement_Pdo
         $row = parent::fetch($style, $cursor, $offset);
 
         $remove = $this->_adapter->foldCase('zend_db_rownum');
-        if (is_array($row) && array_key_exists($remove, $row)) {
+        if (is_array($row) && isset($row[$remove])) {
             unset($row[$remove]);
         }
 

@@ -252,7 +252,7 @@ class Zend_Application
         if (is_array($array2)) {
             foreach ($array2 as $key => $val) {
                 if (is_array($array2[$key])) {
-                    $array1[$key] = (array_key_exists($key, $array1) && is_array($array1[$key]))
+                    $array1[$key] = (isset($array1[$key]) && is_array($array1[$key]))
                                   ? $this->mergeOptions($array1[$key], $array2[$key])
                                   : $array2[$key];
                 } else {

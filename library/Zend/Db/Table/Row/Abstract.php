@@ -174,7 +174,7 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
     public function __get($columnName)
     {
         $columnName = $this->_transformColumn($columnName);
-        if (!array_key_exists($columnName, $this->_data)) {
+        if (!isset($this->_data[$columnName])) {
             require_once 'Zend/Db/Table/Row/Exception.php';
             throw new Zend_Db_Table_Row_Exception("Specified column \"$columnName\" is not in the row");
         }
@@ -192,7 +192,7 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
     public function __set($columnName, $value)
     {
         $columnName = $this->_transformColumn($columnName);
-        if (!array_key_exists($columnName, $this->_data)) {
+        if (!isset($this->_data[$columnName])) {
             require_once 'Zend/Db/Table/Row/Exception.php';
             throw new Zend_Db_Table_Row_Exception("Specified column \"$columnName\" is not in the row");
         }
@@ -210,7 +210,7 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
     public function __unset($columnName)
     {
         $columnName = $this->_transformColumn($columnName);
-        if (!array_key_exists($columnName, $this->_data)) {
+        if (!isset($this->_data[$columnName])) {
             require_once 'Zend/Db/Table/Row/Exception.php';
             throw new Zend_Db_Table_Row_Exception("Specified column \"$columnName\" is not in the row");
         }
@@ -231,7 +231,7 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
     public function __isset($columnName)
     {
         $columnName = $this->_transformColumn($columnName);
-        return array_key_exists($columnName, $this->_data);
+        return isset($this->_data[$columnName]);
     }
 
     /**

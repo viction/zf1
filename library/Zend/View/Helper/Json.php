@@ -61,12 +61,12 @@ class Zend_View_Helper_Json extends Zend_View_Helper_Abstract
             $options = $keepLayouts;
 
             $keepLayouts = false;
-            if (array_key_exists('keepLayouts', $options)) {
+            if (isset($options['keepLayouts'])) {
                 $keepLayouts = $options['keepLayouts'];
                 unset($options['keepLayouts']);
             }
 
-            if (array_key_exists('encodeData', $options)) {
+            if (isset($options['encodeData'])) {
                 $encodeData = $options['encodeData'];
                 unset($options['encodeData']);
             }

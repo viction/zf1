@@ -72,7 +72,7 @@ class Zend_Validate_Regex extends Zend_Validate_Abstract
         }
 
         if (is_array($pattern)) {
-            if (array_key_exists('pattern', $pattern)) {
+            if (isset($pattern['pattern'])) {
                 $pattern = $pattern['pattern'];
             } else {
                 require_once 'Zend/Validate/Exception.php';

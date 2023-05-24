@@ -715,7 +715,7 @@ class Zend_Text_Figlet
      */
     protected function _getLetter($char)
     {
-        if (array_key_exists($this->_uniOrd($char), $this->_charList)) {
+        if (isset($this->_charList[$this->_uniOrd($char)])) {
             $this->_currentChar       = $this->_charList[$this->_uniOrd($char)];
             $this->_previousCharWidth = $this->_currentCharWidth;
             $this->_currentCharWidth  = strlen($this->_currentChar[0]);

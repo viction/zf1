@@ -139,10 +139,10 @@ class Zend_Service_Ebay_Finding_Response_Items extends Zend_Service_Ebay_Finding
                 if (!is_array($productId)) {
                     $productId = array('' => $productId);
                 }
-                $arguments[] = array_key_exists('', $productId)
+                $arguments[] = isset($productId[''])
                              ? $productId['']
                              : null;
-                $arguments[] = array_key_exists('type', $productId)
+                $arguments[] = isset($productId['type'])
                              ? $productId['type']
                              : null;
                 break;

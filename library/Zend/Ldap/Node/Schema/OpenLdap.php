@@ -199,7 +199,7 @@ class Zend_Ldap_Node_Schema_OpenLdap extends Zend_Ldap_Node_Schema
         $attributeType['oid'] = array_shift($tokens); // first token is the oid
         $this->_parseLdapSchemaSyntax($attributeType, $tokens);
 
-        if (array_key_exists('syntax', $attributeType)) {
+        if (isset($attributeType['syntax'])) {
             // get max length from syntax
             if (preg_match('/^(.+){(\d+)}$/', $attributeType['syntax'], $matches)) {
                 $attributeType['syntax'] = $matches[1];
@@ -279,8 +279,8 @@ class Zend_Ldap_Node_Schema_OpenLdap extends Zend_Ldap_Node_Schema
         $parents = $data['sup'];
         if ($parents === null || !is_array($parents) || count($parents) < 1) return;
         foreach ($parents as $parent) {
-            if (!array_key_exists($parent, $repository)) continue;
-            if (!array_key_exists('_parents', $data) || !is_array($data['_parents'])) {
+            if (!isset($repository[$parent])) continue;
+            if (!isset($data['_parents']) || !is_array($data['_parents'])) {
                $data['_parents'] = array();
            }
            $data['_parents'][] = $repository[$parent];
@@ -410,7 +410,7 @@ class Zend_Ldap_Node_Schema_OpenLdap extends Zend_Ldap_Node_Schema
      */
     protected function _ensureNameAttribute(array &$data)
     {
-        if (!array_key_exists('name', $data) || empty($data['name'])) {
+        if (!isset($data['name']) || empty($data['name'])) {
             // force a name
             $data['name'] = $data['oid'];
         }

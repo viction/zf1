@@ -141,7 +141,7 @@ class Zend_Validate_Iban extends Zend_Validate_Abstract
         }
 
         if (is_array($locale)) {
-            if (array_key_exists('locale', $locale)) {
+            if (isset($locale['locale'])) {
                 $locale = $locale['locale'];
             } else {
                 $locale = null;
@@ -213,7 +213,7 @@ class Zend_Validate_Iban extends Zend_Validate_Abstract
             $region = $region->getRegion();
         }
 
-        if (!array_key_exists($region, $this->_ibanregex)) {
+        if (!isset($this->_ibanregex[$region])) {
             $this->_setValue($region);
             $this->_error(self::NOTSUPPORTED);
             return false;

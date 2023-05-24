@@ -56,7 +56,7 @@ class Zend_Filter_Callback implements Zend_Filter_Interface
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
-        } else if (!is_array($options) || !array_key_exists('callback', $options)) {
+        } else if (!is_array($options) || !isset($options['callback'])) {
             $options          = func_get_args();
             $temp['callback'] = array_shift($options);
             if (!empty($options)) {
@@ -66,13 +66,13 @@ class Zend_Filter_Callback implements Zend_Filter_Interface
             $options = $temp;
         }
 
-        if (!array_key_exists('callback', $options)) {
+        if (!isset($options['callback'])) {
             require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception('Missing callback to use');
         }
 
         $this->setCallback($options['callback']);
-        if (array_key_exists('options', $options)) {
+        if (isset($options['options'])) {
             $this->setOptions($options['options']);
         }
     }

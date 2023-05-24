@@ -179,13 +179,13 @@ class Zend_Db_Adapter_Sqlsrv extends Zend_Db_Adapter_Abstract
     protected function _checkRequiredOptions(array $config)
     {
         // we need at least a dbname
-        if (! array_key_exists('dbname', $config)) {
+        if (! isset($config['dbname'])) {
             /** @see Zend_Db_Adapter_Exception */
             require_once 'Zend/Db/Adapter/Exception.php';
             throw new Zend_Db_Adapter_Exception("Configuration array must have a key for 'dbname' that names the database instance");
         }
 
-        if (! array_key_exists('password', $config) && array_key_exists('username', $config)) {
+        if (! isset($config['password', $config) && array_key_exists('username'])) {
             /**
              * @see Zend_Db_Adapter_Exception
              */
@@ -194,7 +194,7 @@ class Zend_Db_Adapter_Sqlsrv extends Zend_Db_Adapter_Abstract
                                                 If Windows Authentication is desired, both keys 'username' and 'password' should be ommited from config.");
         }
 
-        if (array_key_exists('password', $config) && !array_key_exists('username', $config)) {
+        if (isset($config['password', $config) && !array_key_exists('username'])) {
             /**
              * @see Zend_Db_Adapter_Exception
              */
@@ -490,7 +490,7 @@ class Zend_Db_Adapter_Sqlsrv extends Zend_Db_Adapter_Abstract
                 }
             }
 
-            $isPrimary = array_key_exists($row[$column_name], $primaryKeyColumn);
+            $isPrimary = isset($primaryKeyColumn[$row[$column_name]]);
             if ($isPrimary) {
                 $primaryPosition = $primaryKeyColumn[$row[$column_name]];
             } else {

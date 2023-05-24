@@ -254,7 +254,7 @@ abstract class Zend_Markup_Renderer_RendererAbstract
                 'name' => $options['name']
             );
         } else {
-            if ($type && array_key_exists('empty', $options) && $options['empty']) {
+            if ($type && isset($options['empty']) && $options['empty']) {
                 // add a single replace markup
                 $options['type']   = $type;
                 $options['filter'] = $filter;
@@ -381,7 +381,7 @@ abstract class Zend_Markup_Renderer_RendererAbstract
 
         $name   = $this->_getMarkupName($token);
         $markup = (!$name) ? false : $this->_markups[$name];
-        $empty  = (is_array($markup) && array_key_exists('empty', $markup) && $markup['empty']);
+        $empty  = (is_array($markup) && isset($markup['empty']) && $markup['empty']);
 
         // check if the tag has content
         if (!$empty && !$token->hasChildren()) {

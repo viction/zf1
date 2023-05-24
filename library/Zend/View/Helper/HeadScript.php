@@ -281,7 +281,7 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
     {
         foreach ($this->getContainer() as $item) {
             if (($item->source === null)
-                && array_key_exists('src', $item->attributes)
+                && isset($item->attributes['src'])
                 && ($file == $item->attributes['src']))
             {
                 return true;

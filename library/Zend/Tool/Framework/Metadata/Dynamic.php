@@ -187,7 +187,7 @@ class Zend_Tool_Framework_Metadata_Dynamic
     {
         if (method_exists($this, 'get' . $name)) {
             return $this->{'get' . $name}();
-        } elseif (array_key_exists($name, $this->_dynamicAttributes)) {
+        } elseif (isset($this->_dynamicAttributes[$name])) {
             return $this->_dynamicAttributes[$name];
         } else {
             require_once 'Zend/Tool/Framework/Registry/Exception.php';

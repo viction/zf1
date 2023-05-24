@@ -105,7 +105,7 @@ class Zend_Form_Decorator_Image extends Zend_Form_Decorator_Abstract
         }
 
         foreach ($this->_attribBlacklist as $key) {
-            if (array_key_exists($key, $attribs)) {
+            if (isset($attribs[$key])) {
                 unset($attribs[$key]);
             }
         }

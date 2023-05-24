@@ -430,7 +430,7 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
         $remove = $this->_adapter->foldCase('ZEND_DB_ROWNUM');
 
         foreach ($data as $row) {
-            if (is_array($row) && array_key_exists($remove, $row)) {
+            if (is_array($row) && isset($row[$remove])) {
                 unset($row[$remove]);
             }
             $results[] = $row;

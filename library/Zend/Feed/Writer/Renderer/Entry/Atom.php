@@ -207,13 +207,13 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
             $root->appendChild($author);
             $text = $dom->createTextNode($data['name']);
             $name->appendChild($text);
-            if (array_key_exists('email', $data)) {
+            if (isset($data['email'])) {
                 $email = $this->_dom->createElement('email');
                 $author->appendChild($email);
                 $text = $dom->createTextNode($data['email']);
                 $email->appendChild($text);
             }
-            if (array_key_exists('uri', $data)) {
+            if (isset($data['uri'])) {
                 $uri = $this->_dom->createElement('uri');
                 $author->appendChild($uri);
                 $text = $dom->createTextNode($data['uri']);

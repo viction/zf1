@@ -141,7 +141,7 @@ class Zend_Feed_Reader_Extension_Syndication_Feed
      */
     private function _getData($name, $type = 'string')
     {
-        if (array_key_exists($name, $this->_data)) {
+        if (isset($this->_data[$name])) {
             return $this->_data[$name];
         }
 

@@ -307,7 +307,7 @@ class Zend_Json_Server_Smd
             throw new Zend_Json_Server_Exception('Invalid service passed to addService()');
         }
 
-        if (array_key_exists($name, $this->_services)) {
+        if (isset($this->_services[$name])) {
             require_once 'Zend/Json/Server/Exception.php';
             throw new Zend_Json_Server_Exception('Attempt to register a service already registered detected');
         }
@@ -349,7 +349,7 @@ class Zend_Json_Server_Smd
      */
     public function getService($name)
     {
-        if (array_key_exists($name, $this->_services)) {
+        if (isset($this->_services[$name])) {
             return $this->_services[$name];
         }
         return false;
@@ -373,7 +373,7 @@ class Zend_Json_Server_Smd
      */
     public function removeService($name)
     {
-        if (array_key_exists($name, $this->_services)) {
+        if (isset($this->_services[$name])) {
             unset($this->_services[$name]);
             return true;
         }
@@ -440,7 +440,7 @@ class Zend_Json_Server_Smd
                 );
                 $params = array();
                 foreach ($svc->getParams() as $param) {
-                    $paramName = array_key_exists('name', $param) ? $param['name'] : $param['type'];
+                    $paramName = isset($param['name']) ? $param['name'] : $param['type'];
                     $params[] = array(
                         'name' => $paramName,
                         'type' => $param['type'],

@@ -92,7 +92,7 @@ class Zend_Gdata_App_Util
             // will have a matching namespce. If that fails, we decrement the
             // version until we find a match.
             while (!$found && $foundKey >= 0) {
-                if (array_key_exists($foundKey, $collection))
+                if (isset($collection[$foundKey]))
                     $found = true;
                 else
                     $foundKey--;

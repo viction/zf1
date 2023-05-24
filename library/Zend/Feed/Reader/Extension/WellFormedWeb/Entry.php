@@ -46,7 +46,7 @@ class Zend_Feed_Reader_Extension_WellFormedWeb_Entry
     public function getCommentFeedLink()
     {
         $name = 'commentRss';
-        if (array_key_exists($name, $this->_data)) {
+        if (isset($this->_data[$name])) {
             return $this->_data[$name];
         }
 

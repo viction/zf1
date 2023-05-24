@@ -96,17 +96,17 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
             $options = array('public' => $options);
         }
 
-        if (array_key_exists('passphrase', $options)) {
+        if (isset($options['passphrase'])) {
             $this->setPassphrase($options['passphrase']);
             unset($options['passphrase']);
         }
 
-        if (array_key_exists('compression', $options)) {
+        if (isset($options['compression'])) {
             $this->setCompression($options['compression']);
             unset($options['compress']);
         }
 
-        if (array_key_exists('package', $options)) {
+        if (isset($options['package'])) {
             $this->setPackage($options['package']);
             unset($options['package']);
         }

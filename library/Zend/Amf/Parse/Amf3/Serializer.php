@@ -236,7 +236,7 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
             return $this;
         }
 
-        $ref = array_key_exists($string, $this->_referenceStrings) 
+        $ref = isset($this->_referenceStrings[$string]) 
              ? $this->_referenceStrings[$string] 
              : false;
         if ($ref === false){
@@ -389,7 +389,7 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
         }
 
         $hash = spl_object_hash($object);
-        $ref = array_key_exists($hash, $this->_referenceObjects) 
+        $ref = isset($this->_referenceObjects[$hash]) 
              ? $this->_referenceObjects[$hash] 
              : false;
 
@@ -447,7 +447,7 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
         $writeTraits = true;
 
         //check to see, if we have a corresponding definition
-        if(array_key_exists($className, $this->_referenceDefinitions)){
+        if(isset($this->_referenceDefinitions[$className])){
             $traitsInfo    = $this->_referenceDefinitions[$className]['id'];
             $encoding      = $this->_referenceDefinitions[$className]['encoding'];
             $propertyNames = $this->_referenceDefinitions[$className]['propertyNames'];

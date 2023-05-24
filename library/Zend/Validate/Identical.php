@@ -72,8 +72,8 @@ class Zend_Validate_Identical extends Zend_Validate_Abstract
             $token = $token->toArray();
         }
 
-        if (is_array($token) && array_key_exists('token', $token)) {
-            if (array_key_exists('strict', $token)) {
+        if (is_array($token) && isset($token['token'])) {
+            if (isset($token['strict'])) {
                 $this->setStrict($token['strict']);
             }
 
@@ -142,7 +142,7 @@ class Zend_Validate_Identical extends Zend_Validate_Abstract
     {
         $this->_setValue($value);
 
-        if (($context !== null) && isset($context) && array_key_exists($this->getToken(), $context)) {
+        if (($context !== null) && isset($context) && isset($context[$this->getToken()])) {
             $token = $context[$this->getToken()];
         } else {
             $token = $this->getToken();

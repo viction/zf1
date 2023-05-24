@@ -84,7 +84,7 @@ class Zend_Form_Decorator_HtmlTag extends Zend_Form_Decorator_Abstract
         foreach ((array) $attribs as $key => $val) {
             $key = htmlspecialchars($key, ENT_COMPAT, $enc);
             if (is_array($val)) {
-                if (array_key_exists('callback', $val)
+                if (isset($val['callback'])
                     && is_callable($val['callback'])
                 ) {
                     $val = call_user_func($val['callback'], $this);

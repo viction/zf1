@@ -76,7 +76,7 @@ class Zend_Filter_Alnum implements Zend_Filter_Interface
         if ($allowWhiteSpace instanceof Zend_Config) {
             $allowWhiteSpace = $allowWhiteSpace->toArray();
         } else if (is_array($allowWhiteSpace)) {
-            if (array_key_exists('allowwhitespace', $allowWhiteSpace)) {
+            if (isset($allowWhiteSpace['allowwhitespace'])) {
                 $allowWhiteSpace = $allowWhiteSpace['allowwhitespace'];
             } else {
                 $allowWhiteSpace = false;

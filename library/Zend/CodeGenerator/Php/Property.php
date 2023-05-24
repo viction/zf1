@@ -118,8 +118,8 @@ class Zend_CodeGenerator_Php_Property extends Zend_CodeGenerator_Php_Member_Abst
     {
         // if it looks like
         if (is_array($defaultValue)
-            && array_key_exists('value', $defaultValue)
-            && array_key_exists('type', $defaultValue)) {
+            && isset($defaultValue['value'])
+            && isset($defaultValue['type'])) {
             $defaultValue = new Zend_CodeGenerator_Php_Property_DefaultValue($defaultValue);
         }
 

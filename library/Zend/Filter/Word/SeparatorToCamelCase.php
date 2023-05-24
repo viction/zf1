@@ -55,7 +55,7 @@ class Zend_Filter_Word_SeparatorToCamelCase extends Zend_Filter_Word_Separator_A
      */
     private static function _strtoupperArray(array $matches)
     {
-        if (array_key_exists(2, $matches)) {
+        if (isset($matches[2])) {
             return strtoupper($matches[2]);
         }
         return strtoupper($matches[1]);

@@ -109,8 +109,8 @@ class Zend_Tool_Framework_Provider_Repository
 
         // if a provider by the given name already exist, and its not set as overwritable, throw exception
         if (!$overwriteExistingProvider &&
-            (array_key_exists($providerName, $this->_unprocessedProviders)
-                || array_key_exists($providerName, $this->_providers)))
+            (isset($this->_unprocessedProviders[$providerName])
+                || isset($this->_providers[$providerName])))
         {
             require_once 'Zend/Tool/Framework/Provider/Exception.php';
             throw new Zend_Tool_Framework_Provider_Exception('A provider by the name ' . $providerName

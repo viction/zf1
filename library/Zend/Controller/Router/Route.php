@@ -240,7 +240,7 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
 
             foreach ($path as $pos => $pathPart) {
                 // Path is longer than a route, it's not a match
-                if (!array_key_exists($pos, $this->_parts)) {
+                if (!isset($this->_parts[$pos])) {
                     if ($partial) {
                         break;
                     } else {
@@ -321,7 +321,7 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
 
         // Check if all map variables have been initialized
         foreach ($this->_variables as $var) {
-            if (!array_key_exists($var, $return)) {
+            if (!isset($return[$var])) {
                 return false;
             } elseif ($return[$var] == '' || $return[$var] === null) {
                 // Empty variable? Replace with the default value.
@@ -366,7 +366,7 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
             $name = isset($this->_variables[$key]) ? $this->_variables[$key] : null;
 
             $useDefault = false;
-            if (isset($name) && array_key_exists($name, $data) && $data[$name] === null) {
+            if (isset($name) && isset($data[$name]) && $data[$name] === null) {
                 $useDefault = true;
             }
 
@@ -378,7 +378,7 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
                     $value = $this->_values[$name];
                 } elseif (!$reset && !$useDefault && isset($this->_wildcardData[$name])) {
                     $value = $this->_wildcardData[$name];
-                } elseif (array_key_exists($name, $this->_defaults)) {
+                } elseif (isset($this->_defaults[$name])) {
                     $value = $this->_defaults[$name];
                 } else {
                     require_once 'Zend/Controller/Router/Exception.php';

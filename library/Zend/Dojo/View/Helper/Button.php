@@ -58,7 +58,7 @@ class Zend_Dojo_View_Helper_Button extends Zend_Dojo_View_Helper_Dijit
     public function button($id, $value = null, array $params = array(), array $attribs = array())
     {
         $attribs['name'] = $id;
-        if (!array_key_exists('id', $attribs)) {
+        if (!isset($attribs['id'])) {
             $attribs['id'] = $id;
         }
         $attribs = $this->_prepareDijit($attribs, $params, 'element');

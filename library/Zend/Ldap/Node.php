@@ -294,7 +294,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      */
     public static function fromArray(array $data, $fromDataSource = false)
     {
-        if (!array_key_exists('dn', $data)) {
+        if (!isset($data['dn'])) {
             /**
              * @see Zend_Ldap_Exception
              */
@@ -327,7 +327,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
     protected function _ensureRdnAttributeValues($overwrite = false)
     {
         foreach ($this->getRdnArray() as $key => $value) {
-            if (!array_key_exists($key, $this->_currentData) || $overwrite) {
+            if (!isset($this->_currentData[$key]) || $overwrite) {
                 Zend_Ldap_Attribute::setAttribute($this->_currentData, $key, $value, false);
             } else if (!in_array($value, $this->_currentData[$key])) {
                 Zend_Ldap_Attribute::setAttribute($this->_currentData, $key, $value, true);
@@ -457,7 +457,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
             $recursive = $this->hasChildren();
             $ldap->rename($this->_dn, $this->_newDn, $recursive, false);
             foreach ($this->_newDn->getRdn() as $key => $value) {
-                if (array_key_exists($key, $changedData)) {
+                if (isset($changedData[$key])) {
                     unset($changedData[$key]);
                 }
             }
@@ -608,7 +608,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
     {
         $changed = array();
         foreach ($this->_currentData as $key => $value) {
-            if (!array_key_exists($key, $this->_originalData) && !empty($value)) {
+            if (!isset($this->_originalData[$key]) && !empty($value)) {
                 $changed[$key] = $value;
             } else if ($this->_originalData[$key] !== $this->_currentData[$key]) {
                 $changed[$key] = $value;
@@ -631,7 +631,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
             'delete'  => array(),
             'replace' => array());
         foreach ($this->_currentData as $key => $value) {
-            if (!array_key_exists($key, $this->_originalData) && !empty($value)) {
+            if (!isset($this->_originalData[$key]) && !empty($value)) {
                 $changes['add'][$key] = $value;
             } else if (count($this->_originalData[$key]) === 0 && !empty($value)) {
                 $changes['add'][$key] = $value;
@@ -816,7 +816,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
             require_once 'Zend/Ldap/Exception.php';
             throw new Zend_Ldap_Exception(null, 'DN cannot be changed.');
         }
-        else if (array_key_exists($name, $rdn)) {
+        else if (isset($rdn[$name])) {
             /**
              * @see Zend_Ldap_Exception
              */

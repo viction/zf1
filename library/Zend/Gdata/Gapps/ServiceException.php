@@ -127,7 +127,7 @@ class Zend_Gdata_Gapps_ServiceException extends Zend_Exception
      *              if not found.
      */
     public function getError($errorCode) {
-        if (array_key_exists($errorCode, $this->_errors)) {
+        if (isset($this->_errors[$errorCode])) {
             $result = $this->_errors[$errorCode];
             return $result;
         } else {
@@ -144,7 +144,7 @@ class Zend_Gdata_Gapps_ServiceException extends Zend_Exception
      *          by the server.
      */
     public function hasError($errorCode) {
-        return array_key_exists($errorCode, $this->_errors);
+        return isset($this->_errors[$errorCode]);
     }
 
     /**

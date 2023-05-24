@@ -72,7 +72,7 @@ class Zend_Tool_Framework_System_Provider_Manifest
                 $metadataAttrs = urldecode(http_build_query($metadataAttrs, null, ', '));
             }
 
-            if (!array_key_exists($metadataType, $metadataTree)) {
+            if (!isset($metadataTree[$metadataType])) {
                 $metadataTree[$metadataType] = array();
             }
 

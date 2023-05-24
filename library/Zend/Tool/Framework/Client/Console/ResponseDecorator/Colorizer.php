@@ -78,7 +78,7 @@ class Zend_Tool_Framework_Client_Console_ResponseDecorator_Colorizer
         $newContent = '';
 
         foreach ($color as $c) {
-            if (array_key_exists($c, $this->_colorOptions)) {
+            if (isset($this->_colorOptions[$c])) {
                 $newContent .= "\033[" . $this->_colorOptions[$c];
             }
         }

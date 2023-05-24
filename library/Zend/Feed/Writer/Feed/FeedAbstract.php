@@ -97,7 +97,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     {
         $author = array();
         if (is_array($name)) {
-            if (!array_key_exists('name', $name) || empty($name['name']) || !is_string($name['name'])) {
+            if (!isset($name['name']) || empty($name['name']) || !is_string($name['name'])) {
                 require_once 'Zend/Feed/Exception.php';
                 throw new Zend_Feed_Exception('Invalid parameter: author array must include a "name" key with a non-empty string value');
             }
@@ -562,7 +562,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getAuthors()
     {
-        if (!array_key_exists('authors', $this->_data)) {
+        if (!isset($this->_data['authors'])) {
             return null;
         }
         return $this->_data['authors'];
@@ -575,7 +575,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getCopyright()
     {
-        if (!array_key_exists('copyright', $this->_data)) {
+        if (!isset($this->_data['copyright'])) {
             return null;
         }
         return $this->_data['copyright'];
@@ -588,7 +588,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getDateCreated()
     {
-        if (!array_key_exists('dateCreated', $this->_data)) {
+        if (!isset($this->_data['dateCreated'])) {
             return null;
         }
         return $this->_data['dateCreated'];
@@ -601,7 +601,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getDateModified()
     {
-        if (!array_key_exists('dateModified', $this->_data)) {
+        if (!isset($this->_data['dateModified'])) {
             return null;
         }
         return $this->_data['dateModified'];
@@ -614,7 +614,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getLastBuildDate()
     {
-        if (!array_key_exists('lastBuildDate', $this->_data)) {
+        if (!isset($this->_data['lastBuildDate'])) {
             return null;
         }
         return $this->_data['lastBuildDate'];
@@ -627,7 +627,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getDescription()
     {
-        if (!array_key_exists('description', $this->_data)) {
+        if (!isset($this->_data['description'])) {
             return null;
         }
         return $this->_data['description'];
@@ -640,7 +640,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getGenerator()
     {
-        if (!array_key_exists('generator', $this->_data)) {
+        if (!isset($this->_data['generator'])) {
             return null;
         }
         return $this->_data['generator'];
@@ -653,7 +653,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getId()
     {
-        if (!array_key_exists('id', $this->_data)) {
+        if (!isset($this->_data['id'])) {
             return null;
         }
         return $this->_data['id'];
@@ -666,7 +666,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getImage()
     {
-        if (!array_key_exists('image', $this->_data)) {
+        if (!isset($this->_data['image'])) {
             return null;
         }
         return $this->_data['image'];
@@ -679,7 +679,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getIcon()
     {
-        if (!array_key_exists('icon', $this->_data)) {
+        if (!isset($this->_data['icon'])) {
             return null;
         }
         return $this->_data['icon'];
@@ -692,7 +692,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getLanguage()
     {
-        if (!array_key_exists('language', $this->_data)) {
+        if (!isset($this->_data['language'])) {
             return null;
         }
         return $this->_data['language'];
@@ -705,7 +705,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getLink()
     {
-        if (!array_key_exists('link', $this->_data)) {
+        if (!isset($this->_data['link'])) {
             return null;
         }
         return $this->_data['link'];
@@ -718,7 +718,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getFeedLinks()
     {
-        if (!array_key_exists('feedLinks', $this->_data)) {
+        if (!isset($this->_data['feedLinks'])) {
             return null;
         }
         return $this->_data['feedLinks'];
@@ -731,7 +731,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getTitle()
     {
-        if (!array_key_exists('title', $this->_data)) {
+        if (!isset($this->_data['title'])) {
             return null;
         }
         return $this->_data['title'];
@@ -744,7 +744,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getEncoding()
     {
-        if (!array_key_exists('encoding', $this->_data)) {
+        if (!isset($this->_data['encoding'])) {
             return 'UTF-8';
         }
         return $this->_data['encoding'];
@@ -757,7 +757,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getBaseUrl()
     {
-        if (!array_key_exists('baseUrl', $this->_data)) {
+        if (!isset($this->_data['baseUrl'])) {
             return null;
         }
         return $this->_data['baseUrl'];
@@ -770,7 +770,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getHubs()
     {
-        if (!array_key_exists('hubs', $this->_data)) {
+        if (!isset($this->_data['hubs'])) {
             return null;
         }
         return $this->_data['hubs'];
@@ -783,7 +783,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function getCategories()
     {
-        if (!array_key_exists('categories', $this->_data)) {
+        if (!isset($this->_data['categories'])) {
             return null;
         }
         return $this->_data['categories'];

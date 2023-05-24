@@ -124,8 +124,8 @@ abstract class Zend_Dojo_Form_Element_DijitMulti extends Zend_Dojo_Form_Element_
     {
         foreach ($options as $option => $value) {
             if (is_array($value)
-                && array_key_exists('key', $value)
-                && array_key_exists('value', $value)
+                && isset($value['key'])
+                && isset($value['value'])
             ) {
                 $this->addMultiOption($value['key'], $value['value']);
             } else {

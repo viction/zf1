@@ -324,7 +324,7 @@ class Zend_Dojo_BuildLayer
      */
     public function hasProfileOption($key)
     {
-        return array_key_exists((string) $key, $this->_profileOptions);
+        return isset($this->_profileOptions[(string) $key]);
     }
 
     /**
@@ -420,7 +420,7 @@ class Zend_Dojo_BuildLayer
         $layerName = $this->getLayerName();
         if (null !== $layerName) {
             $prefix    = $this->_getPrefix($layerName);
-            if (!array_key_exists($prefix, $this->_profilePrefixes)) {
+            if (!isset($this->_profilePrefixes[$prefix])) {
                 $this->addProfilePrefix($prefix);
             }
         }
@@ -431,7 +431,7 @@ class Zend_Dojo_BuildLayer
                 $modules = $helper->getModules();
                 foreach ($modules as $module) {
                     $prefix = $this->_getPrefix($module);
-                    if (!array_key_exists($prefix, $this->_profilePrefixes)) {
+                    if (!isset($this->_profilePrefixes[$prefix])) {
                         $this->addProfilePrefix($prefix);
                     }
                 }
@@ -492,7 +492,7 @@ class Zend_Dojo_BuildLayer
         $layerScriptPath = $this->getLayerScriptPath();
         $profilePrefixes = $this->getProfilePrefixes();
 
-        if (!array_key_exists('releaseName', $profileOptions)) {
+        if (!isset($profileOptions['releaseName'])) {
             $profileOptions['releaseName'] = substr($layerName, 0, strpos($layerName, '.'));
         }
 

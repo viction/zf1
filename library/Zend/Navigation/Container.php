@@ -124,7 +124,7 @@ abstract class Zend_Navigation_Container implements RecursiveIterator, Countable
 
         $hash = $page->hashCode();
 
-        if (array_key_exists($hash, $this->_index)) {
+        if (isset($this->_index[$hash])) {
             // page is already in container
             return $this;
         }
@@ -260,7 +260,7 @@ abstract class Zend_Navigation_Container implements RecursiveIterator, Countable
      */
     public function hasPage(Zend_Navigation_Page $page, $recursive = false)
     {
-        if (array_key_exists($page->hashCode(), $this->_index)) {
+        if (isset($this->_index[$page->hashCode()])) {
             return true;
         } elseif ($recursive) {
             foreach ($this->_pages as $childPage) {

@@ -71,7 +71,7 @@ class Zend_Filter_Null implements Zend_Filter_Interface
                 $temp = array_shift($options);
             }
             $options = $temp;
-        } else if (is_array($options) && array_key_exists('type', $options)) {
+        } else if (is_array($options) && isset($options['type'])) {
             $options = $options['type'];
         }
 

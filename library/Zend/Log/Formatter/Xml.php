@@ -75,18 +75,18 @@ class Zend_Log_Formatter_Xml extends Zend_Log_Formatter_Abstract
             }
         }
 
-        if (!array_key_exists('rootElement', $options)) {
+        if (!isset($options['rootElement'])) {
             $options['rootElement'] = 'logEntry';
         }
 
-        if (!array_key_exists('encoding', $options)) {
+        if (!isset($options['encoding'])) {
             $options['encoding'] = 'UTF-8';
         }
 
         $this->_rootElement = $options['rootElement'];
         $this->setEncoding($options['encoding']);
 
-        if (array_key_exists('elementMap', $options)) {
+        if (isset($options['elementMap'])) {
             $this->_elementMap  = $options['elementMap'];
         }
     }

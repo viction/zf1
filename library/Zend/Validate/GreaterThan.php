@@ -69,7 +69,7 @@ class Zend_Validate_GreaterThan extends Zend_Validate_Abstract
         }
 
         if (is_array($min)) {
-            if (array_key_exists('min', $min)) {
+            if (isset($min['min'])) {
                 $min = $min['min'];
             } else {
                 require_once 'Zend/Validate/Exception.php';

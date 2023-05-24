@@ -72,17 +72,17 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
         parent::__construct($options);
 
         $options = &$this->_options['driverOptions'];
-        if (!array_key_exists('scheme', $options)) {
+        if (!isset($options['scheme'])) {
             $options['scheme'] = self::DEFAULT_SCHEME;
         }
-        if (!array_key_exists('host', $options)) {
+        if (!isset($options['host'])) {
             $options['host'] = self::DEFAULT_HOST;
         }
-        if (!array_key_exists('port', $options)) {
+        if (!isset($options['port'])) {
             $options['port'] = self::DEFAULT_PORT;
         }
 
-        if (array_key_exists('stompClient', $options)) {
+        if (isset($options['stompClient'])) {
             $this->_client = $options['stompClient'];
         } else {
             $this->_client = new Zend_Queue_Stomp_Client($options['scheme'], $options['host'], $options['port']);
