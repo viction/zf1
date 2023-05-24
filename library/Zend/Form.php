@@ -648,7 +648,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
                     $this->addDisplayGroupPrefixPath($prefix, $path);
                     continue;
                 }
-                if (isset($value['prefix', $value) && array_key_exists('path'])) {
+                if (isset($value['prefix']) && isset($value['path'])) {
                     $this->addDisplayGroupPrefixPath($value['prefix'], $value['path']);
                 }
             }
