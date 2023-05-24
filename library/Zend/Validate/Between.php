@@ -114,7 +114,7 @@ class Zend_Validate_Between extends Zend_Validate_Abstract
             $options = $temp;
         }
 
-        if (!isset($options['min', $options) || !array_key_exists('max'])) {
+        if (!isset($options['min']) || !isset($options['max'])) {
             require_once 'Zend/Validate/Exception.php';
             throw new Zend_Validate_Exception("Missing option. 'min' and 'max' has to be given");
         }

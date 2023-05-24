@@ -1295,7 +1295,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
             if (($belongsTo = $element->getBelongsTo()) !== $eBelongTo) {
                 $check = $this->_dissolveArrayValue($defaults, $belongsTo);
             }
-            if (array_key_exists($name, (array)$check)) {
+            if (is_array($check) && isset($check[$name])) {
                 $this->setDefault($name, $check[$name]);
                 $defaults = $this->_dissolveArrayUnsetKey($defaults, $belongsTo, $name);
             }
@@ -2160,12 +2160,12 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
         $segs  = ('' !== $path) ? explode('/', $path) : array();
 
         foreach ($segs as $seg) {
-            if (!array_key_exists($seg, (array)$unset)) {
+            if ( !isset($unset[$seg]) ) {
                 return $array;
             }
             $unset =& $unset[$seg];
         }
-        if (array_key_exists($key, (array)$unset)) {
+        if (is_array($unset) && isset($unset[$key])) {
             unset($unset[$key]);
         }
         return $array;

@@ -122,7 +122,7 @@ abstract class Zend_Validate_Db_Abstract extends Zend_Validate_Abstract
             $options = $temp;
         }
 
-        if (!isset($options['table', $options) && !array_key_exists('schema'])) {
+        if (!isset($options['table']) && isset($options['schema'])) {
             require_once 'Zend/Validate/Exception.php';
             throw new Zend_Validate_Exception('Table or Schema option missing!');
         }

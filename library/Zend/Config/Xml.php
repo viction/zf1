@@ -294,7 +294,7 @@ class Zend_Config_Xml extends Zend_Config
                 }
 
                 if (isset($config[$key])) {
-                    if (!is_array($config[$key]) || !array_key_exists(0, $config[$key])) {
+                    if (!is_array($config[$key]) || !isset($config[$key][0])) {
                         $config[$key] = array($config[$key]);
                     }
 

@@ -1815,8 +1815,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
                             $status = preg_match($regexChar, $domainPart);
                             if ($status > 0) {
                                 $length = 63;
-                                if (isset($this->_idnLength[strtoupper($this->_tld)])
-                                    && (array_key_exists($regexKey, $this->_idnLength[strtoupper($this->_tld)]))) {
+                                if (isset($this->_idnLength[strtoupper($this->_tld)][$regexKey])) {
                                     $length = $this->_idnLength[strtoupper($this->_tld)];
                                 }
 

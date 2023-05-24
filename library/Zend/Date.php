@@ -244,7 +244,7 @@ class Zend_Date extends Zend_Date_DateObject
         foreach ($options as $name => $value) {
             $name  = strtolower($name);
 
-            if (array_key_exists($name, self::$_options)) {
+            if (isset(self::$_options[$name])) {
                 switch($name) {
                     case 'format_type' :
                         if ((strtolower($value) != 'php') && (strtolower($value) != 'iso')) {

@@ -215,7 +215,7 @@ class Zend_Session extends Zend_Session_Abstract
             $userOptionName = strtolower($userOptionName);
 
             // set the ini based values
-            if (array_key_exists($userOptionName, self::$_defaultOptions)) {
+            if (isset(self::$_defaultOptions[$userOptionName])) {
                 ini_set("session.$userOptionName", $userOptionValue);
             }
             elseif (isset(self::$_localOptions[$userOptionName])) {

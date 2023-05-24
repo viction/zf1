@@ -488,7 +488,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
 
         if ($wordStack && $wordArguments) {
             for ($wordIndex = 1; $wordIndex <= count($wordArguments); $wordIndex++) {
-                if (!isset($wordArguments[$wordIndex-1, $wordStack) || !array_key_exists($wordIndex])) {
+                if (!isset($wordArguments[$wordIndex-1]) || !isset($wordStack[$wordIndex])) {
                     break;
                 }
                 $this->_request->setProviderParameter($wordArguments[$wordIndex]['parameterName'], $wordStack[$wordIndex-1]);

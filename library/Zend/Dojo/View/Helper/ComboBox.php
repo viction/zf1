@@ -119,7 +119,7 @@ class Zend_Dojo_View_Helper_ComboBox extends Zend_Dojo_View_Helper_Dijit
      */
     protected function _renderStore(array $params, $id)
     {
-        if (!isset($params['store', $params) || !array_key_exists('type'])) {
+        if (!isset($params['store']) || !isset($params['type'])) {
             return false;
         }
 

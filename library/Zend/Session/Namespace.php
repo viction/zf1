@@ -79,7 +79,7 @@ class Zend_Session_Namespace extends Zend_Session_Abstract implements IteratorAg
     public static function resetSingleInstance($namespaceName = null)
     {
         if ($namespaceName != null) {
-            if (array_key_exists($namespaceName, self::$_singleInstances)) {
+            if (isset(self::$_singleInstances[$namespaceName])) {
                 unset(self::$_singleInstances[$namespaceName]);
             }
             return;

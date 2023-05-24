@@ -76,11 +76,11 @@ class Zend_Tool_Framework_System_Provider_Manifest
                 $metadataTree[$metadataType] = array();
             }
 
-            if (!array_key_exists($metadataName, $metadataTree[$metadataType])) {
+            if (!isset($metadataTree[$metadataType][$metadataName])) {
                 $metadataTree[$metadataType][$metadataName] = array();
             }
 
-            if (!array_key_exists($metadataAttrs, $metadataTree[$metadataType][$metadataName])) {
+            if (!isset($metadataTree[$metadataType][$metadataName][$metadataAttrs])) {
                 $metadataTree[$metadataType][$metadataName][$metadataAttrs] = array();
             }
 

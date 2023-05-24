@@ -1683,13 +1683,13 @@ class Zend_Locale
     public static function isLocale($locale, $strict = false, $compatible = true)
     {
         if (($locale instanceof Zend_Locale)
-            || (is_string($locale) && array_key_exists($locale, self::$_localeData))
+            || (is_string($locale) && isset(self::$_localeData[$locale]))
         ) {
             return true;
         }
 
         // Is it an alias?
-        if (is_string($locale) && array_key_exists($locale, self::$_localeAliases)) {
+        if (is_string($locale) && isset(self::$_localeAliases[$locale])) {
             return true;
         }
 
@@ -1776,7 +1776,7 @@ class Zend_Locale
     public static function getLocaleToTerritory($territory)
     {
         $territory = strtoupper($territory);
-        if (array_key_exists($territory, self::$_territoryData)) {
+        if (isset(self::$_territoryData[$territory])) {
             return self::$_territoryData[$territory];
         }
 
@@ -1928,7 +1928,7 @@ class Zend_Locale
 
         $parts = explode('_', $locale);
         if (!isset(self::$_localeData[$parts[0]])) {
-            if ((count($parts) == 1) && array_key_exists($parts[0], self::$_territoryData)) {
+            if ((count($parts) == 1) && isset(self::$_territoryData[$parts[0]])) {
                 return self::$_territoryData[$parts[0]];
             }
 

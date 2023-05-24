@@ -185,7 +185,7 @@ class Zend_Db_Adapter_Sqlsrv extends Zend_Db_Adapter_Abstract
             throw new Zend_Db_Adapter_Exception("Configuration array must have a key for 'dbname' that names the database instance");
         }
 
-        if (! isset($config['password', $config) && array_key_exists('username'])) {
+        if (! (isset($config['password']) && isset($config['username'])) ) {
             /**
              * @see Zend_Db_Adapter_Exception
              */
@@ -194,7 +194,7 @@ class Zend_Db_Adapter_Sqlsrv extends Zend_Db_Adapter_Abstract
                                                 If Windows Authentication is desired, both keys 'username' and 'password' should be ommited from config.");
         }
 
-        if (isset($config['password', $config) && !array_key_exists('username'])) {
+        if (isset($config['password']) && !isset($config['username'])) {
             /**
              * @see Zend_Db_Adapter_Exception
              */

@@ -64,7 +64,7 @@ class Zend_Reflection_Docblock_Tag implements Reflector
         }
 
         $tagName = $matches[1];
-        if (array_key_exists($tagName, self::$_tagClasses)) {
+        if (isset(self::$_tagClasses[$tagName])) {
             $tagClass = self::$_tagClasses[$tagName];
             if (!class_exists($tagClass)) {
                 Zend_Loader::loadClass($tagClass);

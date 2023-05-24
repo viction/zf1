@@ -181,7 +181,7 @@ class Zend_Service_Ebay_Finding_Response_Items extends Zend_Service_Ebay_Finding
 
         // verify cache
         $id = serialize($arguments);
-        if (!array_key_exists($id, self::$_pageCache)) {
+        if (!isset(self::$_pageCache[$id])) {
             if ($number == $this->paginationOutput->pageNumber) {
                 // add itself to cache
                 $new = $this;

@@ -85,7 +85,7 @@ class Zend_Filter_StripTags implements Zend_Filter_Interface
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
         } else if ((!is_array($options)) || (is_array($options) && !isset($options['allowTags']) &&
-            !isset($options['allowAttribs', $options) && !array_key_exists('allowComments']))) {
+            !isset($options['allowAttribs']) && !isset($options['allowComments']))) {
             $options = func_get_args();
             $temp['allowTags'] = array_shift($options);
             if (!empty($options)) {
@@ -331,7 +331,7 @@ class Zend_Filter_StripTags implements Zend_Filter_Interface
                 $attributeValue     = empty($matches[3][$index]) ? $matches[5][$index] : $matches[3][$index];
 
                 // If the attribute is not allowed, then remove it entirely
-                if (!array_key_exists($attributeName, $this->_tagsAllowed[$tagName])
+                if (!isset($this->_tagsAllowed[$tagName][$attributeName])
                     && !isset($this->_attributesAllowed[$attributeName])) {
                     continue;
                 }
